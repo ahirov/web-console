@@ -7,11 +7,11 @@ using Autofac;
 using Autofac.Integration.Mvc;
 using WebConsole.Core.IoC;
 
-namespace WebConsole
+namespace WebConsole.Config
 {
     public class ComponentsConfig
     {
-        public static void Init()
+        public static void Register()
         {
             var builder = new ContainerBuilder();
             builder.RegisterControllers(typeof(MvcApplication).Assembly);
