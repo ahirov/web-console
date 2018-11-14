@@ -1,0 +1,15 @@
+extensions: designer.cs generated.cs
+extensions: .cs .scss
+// WebConsole (https://github.com/hirov-anton/web-console)
+// See LICENSE file in the solution root for full license information
+// Copyright (c) 2018 Anton Hirov
+
+extensions: .xml .config .xsd
+<!-- WebConsole (https://github.com/hirov-anton/web-console)
+See LICENSE file in the solution root for full license information
+Copyright (c) 2018 Anton Hirov -->
+
+extensions: .cshtml
+@* WebConsole (https://github.com/hirov-anton/web-console)
+See LICENSE file in the solution root for full license information
+Copyright (c) 2018 Anton Hirov *@
