@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.28010.2048
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebConsole", "WebConsole\WebConsole.csproj", "{1B10463F-52BB-4A3A-B609-DF909826FEFA}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{D7F93525-6AD7-4AF7-83AA-3958073CF60D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AttachedConsole", "Tests\AttachedConsole\AttachedConsole.csproj", "{B84B83F6-9B9B-4585-BA22-86526E3525AD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,9 +19,16 @@ Global
 		{1B10463F-52BB-4A3A-B609-DF909826FEFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1B10463F-52BB-4A3A-B609-DF909826FEFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1B10463F-52BB-4A3A-B609-DF909826FEFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B84B83F6-9B9B-4585-BA22-86526E3525AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B84B83F6-9B9B-4585-BA22-86526E3525AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B84B83F6-9B9B-4585-BA22-86526E3525AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B84B83F6-9B9B-4585-BA22-86526E3525AD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B84B83F6-9B9B-4585-BA22-86526E3525AD} = {D7F93525-6AD7-4AF7-83AA-3958073CF60D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {63FC1DE6-B087-4DF8-8515-9FC77CAF7704}
