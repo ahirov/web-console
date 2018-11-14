@@ -13,6 +13,8 @@ namespace WebConsole
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+
+            ComponentsConfig.Init();
         }
     }
 }
