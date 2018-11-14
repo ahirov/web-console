@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AttachedConsole", "Tests\At
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebConsole", "WebConsole\Common\WebConsole.csproj", "{1B10463F-52BB-4A3A-B609-DF909826FEFA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebConsole.Core", "WebConsole\Core\WebConsole.Core.csproj", "{89D76E2B-BEFD-4415-A027-93A01B4F1604}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +25,10 @@ Global
 		{1B10463F-52BB-4A3A-B609-DF909826FEFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1B10463F-52BB-4A3A-B609-DF909826FEFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1B10463F-52BB-4A3A-B609-DF909826FEFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89D76E2B-BEFD-4415-A027-93A01B4F1604}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89D76E2B-BEFD-4415-A027-93A01B4F1604}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89D76E2B-BEFD-4415-A027-93A01B4F1604}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89D76E2B-BEFD-4415-A027-93A01B4F1604}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
