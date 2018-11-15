@@ -20,7 +20,10 @@ namespace WebConsole.Core.Job
 
         public void Final()
         {
-            handler.LoadAll().ForEach(process => process.Dispose());
+            var processes = handler.LoadAll();
+            foreach (var process in processes)
+                process.Value.Dispose();
+            processes.Clear();
         }
     }
 }

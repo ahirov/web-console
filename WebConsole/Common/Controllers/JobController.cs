@@ -11,10 +11,13 @@ namespace WebConsole.Controllers
     public class JobController : Controller
     {
         private readonly IJobInitializer initializer;
+        private readonly IJobFinalizer finalizer;
 
-        public JobController(IJobInitializer initializer)
+        public JobController(IJobInitializer initializer,
+                             IJobFinalizer finalizer)
         {
             this.initializer = initializer;
+            this.finalizer = finalizer;
         }
 
         //
@@ -23,7 +26,7 @@ namespace WebConsole.Controllers
         public ActionResult Start()
         {
             initializer.Init(typeof(Program));
-            return new EmptyResult();
+            return Json(new {data = true});
         }
 
         //
@@ -31,7 +34,8 @@ namespace WebConsole.Controllers
         [HttpPost]
         public ActionResult Stop()
         {
-            return View();
+            finalizer.Final();
+            return Json(new {data = true});
         }
 
         //

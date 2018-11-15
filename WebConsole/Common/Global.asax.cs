@@ -4,6 +4,7 @@
 
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Optimization;
 using System.Web.Routing;
 using Autofac;
 using WebConsole.Config;
@@ -19,8 +20,10 @@ namespace WebConsole
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.Register(RouteTable.Routes);
+            BundleConfig.Register(BundleTable.Bundles);
 
             var container = ComponentsConfig.Register();
+            container.Resolve<IJobBufferHandler>().Init();
             finalizer = container.Resolve<IJobFinalizer>();
         }
 

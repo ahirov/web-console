@@ -4,15 +4,16 @@
 
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
+using static WebConsole.Core.StorageKeys;
 
 namespace WebConsole.Core.Job
 {
     public interface IJobBufferHandler
     {
+        void Init();
         void Save(Process job);
         Process Load(int id);
-        List<Process> LoadAll();
+        Dictionary<int, Process> LoadAll();
     }
 
     public class JobBufferHandler : IJobBufferHandler
@@ -24,20 +25,25 @@ namespace WebConsole.Core.Job
             this.buffer = buffer;
         }
 
+        public void Init()
+        {
+            buffer[JobSet] = new Dictionary<int, Process>();
+        }
+
         public void Save(Process job)
         {
-            buffer.Action(StorageKeys.JobSet, set => set[job.Id] = job);
+            buffer.Action(JobSet, set => set[job.Id] = job);
         }
 
         public Process Load(int id)
         {
             // TODO Add job checking!!!
-            return buffer[StorageKeys.JobSet][id];
+            return buffer[JobSet][id];
         }
 
-        public List<Process> LoadAll()
+        public Dictionary<int, Process> LoadAll()
         {
-            return buffer[StorageKeys.JobSet].Values.ToList();
+            return buffer[JobSet];
         }
     }
 }
