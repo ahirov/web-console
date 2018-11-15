@@ -11,7 +11,7 @@ namespace WebConsole.Config
 {
     public class ComponentsConfig
     {
-        public static void Register()
+        public static IContainer Register()
         {
             var builder = new ContainerBuilder();
             builder.RegisterControllers(typeof(MvcApplication).Assembly);
@@ -19,6 +19,7 @@ namespace WebConsole.Config
 
             var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
+            return container;
         }
     }
 }

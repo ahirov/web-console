@@ -2,6 +2,7 @@
 // See LICENSE file in the solution root for full license information
 // Copyright (c) 2018 Anton Hirov
 
+using System;
 using System.Web;
 
 namespace WebConsole.Core
@@ -9,31 +10,42 @@ namespace WebConsole.Core
     public interface IApplicationStorage<T> where T : class
     {
         T this[string key] { get; set; }
+        void Action(string key, Action<T> action);
     }
 
     public class ApplicationStorage<T> : IApplicationStorage<T> where T : class
     {
+        private readonly HttpApplicationState state = HttpContext.Current.Application;
+
         public T this[string key]
         {
-            get { return Get(key, HttpContext.Current.Application); }
-            set { Set(key, value, HttpContext.Current.Application); }
+            get => Get(key);
+            set => Set(key, value);
         }
 
-        private static T Get(string key, HttpApplicationState application)
+        public void Action(string key, Action<T> action)
         {
-            application.Lock();
+            state.Lock();
 
-            var result = application[key];
-            application.UnLock();
-            return (T)result;
+            action.Invoke((T) state[key]);
+            state.UnLock();
         }
 
-        private static void Set(string key, T value, HttpApplicationState application)
+        private T Get(string key)
         {
-            application.Lock();
+            state.Lock();
 
-            application[key] = value;
-            application.UnLock();
+            var value = (T)state[key];
+            state.UnLock();
+            return value;
+        }
+
+        private void Set(string key, T value)
+        {
+            state.Lock();
+
+            state[key] = value;
+            state.UnLock();
         }
     }
 }

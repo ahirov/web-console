@@ -47,7 +47,11 @@
   <ItemGroup>
     <Compile Include="ApplicationStorage.cs" />
     <Compile Include="IoC\WebShellModule.cs" />
+    <Compile Include="Job\JobBufferHandler.cs" />
+    <Compile Include="Job\JobFinalizer.cs" />
+    <Compile Include="Job\JobInitializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StorageKeys.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

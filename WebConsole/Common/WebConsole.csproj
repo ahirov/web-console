@@ -102,6 +102,7 @@
     <Compile Include="Config\ComponentsConfig.cs" />
     <Compile Include="Config\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\JobController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -122,6 +123,10 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <ProjectReference Include="..\..\Tests\AttachedConsole\AttachedConsole.csproj">
+      <Project>{b84b83f6-9b9b-4585-ba22-86526e3525ad}</Project>
+      <Name>AttachedConsole</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Core\WebConsole.Core.csproj">
       <Project>{89d76e2b-befd-4415-a027-93a01b4f1604}</Project>
       <Name>WebConsole.Core</Name>

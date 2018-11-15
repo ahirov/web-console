@@ -5,18 +5,28 @@
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Autofac;
 using WebConsole.Config;
+using WebConsole.Core.Job;
 
 namespace WebConsole
 {
     public class MvcApplication : HttpApplication
     {
+        private IJobFinalizer finalizer;
+
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.Register(RouteTable.Routes);
 
-            ComponentsConfig.Register();
+            var container = ComponentsConfig.Register();
+            finalizer = container.Resolve<IJobFinalizer>();
+        }
+
+        protected void Application_End()
+        {
+            finalizer.Final();
         }
     }
 }
