@@ -12,12 +12,24 @@ namespace WebConsole.Config
         {
             var js = new ScriptBundle("~/bundles/js");
             bundles.Add(js);
-            js.IncludeDirectory("~/Scripts/global/", "*.js", true);
-            js.IncludeDirectory("~/Scripts/job/", "*.js", true);
+            Include("~/Scripts/global/", js);
+            Include("~/Scripts/job/", js);
 
             var css = new StyleBundle("~/bundles/css");
             bundles.Add(css);
-            css.IncludeDirectory("~/Styles/global/", "*.css", true);
+            Include("~/Styles/global/", css);
+            Include("~/Styles/io/", css);
+        }
+
+        private static void Include(string path, Bundle bundle)
+        {
+            var extension = bundle is ScriptBundle
+                ? "*.js"
+                : bundle is StyleBundle
+                    ? "*.css"
+                    : null;
+            if (extension != null)
+                bundle.IncludeDirectory(path, extension, true);
         }
     }
 }

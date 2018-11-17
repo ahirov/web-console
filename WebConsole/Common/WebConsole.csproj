@@ -116,6 +116,9 @@
     <Content Include="Scripts\job\wc-job-global.js" />
     <Content Include="Scripts\job\wc-job-onload-events.js" />
     <Content Include="Scripts\job\wc-job-requests.js" />
+    <Content Include="Styles\io\wc-io-area-footer.css" />
+    <Content Include="Styles\io\wc-io-area-header.css" />
+    <Content Include="Styles\io\wc-io-area.css" />
     <Content Include="Styles\global\wc-footer.css" />
     <Content Include="Styles\global\wc-global.css" />
     <Content Include="Styles\global\wc-header.css" />
