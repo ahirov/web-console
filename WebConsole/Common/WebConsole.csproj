@@ -122,13 +122,15 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Areas\Job\Controllers\StreamController.cs" />
+    <Compile Include="Areas\Job\Controllers\StateController.cs" />
+    <Compile Include="Areas\Job\JobAreaRegistration.cs" />
     <Compile Include="Config\BundleConfig.cs" />
     <Compile Include="Config\ComponentsConfig.cs" />
     <Compile Include="Config\RouteConfig.cs" />
     <Compile Include="Config\ViewEnginesConfig.cs" />
     <Compile Include="Config\WcViewEngine.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\JobController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -136,6 +138,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Web.config" />
+    <Content Include="Areas\Job\Views\Web.config" />
+    <Content Include="Areas\Job\Views\_ViewStart.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Workspace\Layout.cshtml" />
@@ -149,7 +153,9 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Areas\Job\Views\Shared\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Tests\AttachedConsole\AttachedConsole.csproj">
       <Project>{b84b83f6-9b9b-4585-ba22-86526e3525ad}</Project>
