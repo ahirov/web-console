@@ -116,12 +116,17 @@
     <Content Include="Scripts\job\wc-job-global.js" />
     <Content Include="Scripts\job\wc-job-onload-events.js" />
     <Content Include="Scripts\job\wc-job-requests.js" />
+    <Content Include="Styles\global\wc-footer.css" />
+    <Content Include="Styles\global\wc-global.css" />
+    <Content Include="Styles\global\wc-header.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Config\BundleConfig.cs" />
     <Compile Include="Config\ComponentsConfig.cs" />
     <Compile Include="Config\RouteConfig.cs" />
+    <Compile Include="Config\ViewEnginesConfig.cs" />
+    <Compile Include="Config\WcViewEngine.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JobController.cs" />
     <Compile Include="Global.asax.cs">
@@ -135,6 +140,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Workspace\Layout.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Workspace\Partial\Header.cshtml" />
+    <Content Include="Views\Workspace\Partial\Footer.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

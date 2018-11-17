@@ -1,0 +1,14 @@
+﻿@* WebConsole (https://github.com/hirov-anton/web-console)
+See LICENSE file in the solution root for full license information
+Copyright (c) 2018 Anton Hirov *@
+
+<footer>
+    @{
+        var version = ViewContext.Controller.GetType().Assembly.GetName().Version;
+    }
+    <div>
+        <p class="text-muted">
+            WebConsole - v.@version.Major.@version.Minor &copy; Anton Hirov (@DateTime.Now.Year)
+        </p>
+    </div>
+</footer>

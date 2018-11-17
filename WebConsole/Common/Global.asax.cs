@@ -19,6 +19,8 @@ namespace WebConsole
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
+            ViewEnginesConfig.Register(ViewEngines.Engines);
+
             RouteConfig.Register(RouteTable.Routes);
             BundleConfig.Register(BundleTable.Bundles);
 

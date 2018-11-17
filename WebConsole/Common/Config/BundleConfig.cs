@@ -14,6 +14,10 @@ namespace WebConsole.Config
             bundles.Add(js);
             js.IncludeDirectory("~/Scripts/global/", "*.js", true);
             js.IncludeDirectory("~/Scripts/job/", "*.js", true);
+
+            var css = new StyleBundle("~/bundles/css");
+            bundles.Add(css);
+            css.IncludeDirectory("~/Styles/global/", "*.css", true);
         }
     }
 }
