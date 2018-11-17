@@ -2,10 +2,19 @@
 See LICENSE file in the solution root for full license information
 Copyright (c) 2018 Anton Hirov */
 
-function processRequest(url, handler) {
+function processReadRequest(url, handler) {
+    processRequest(url, null, handler);
+}
+
+function processWriteRequest(url, data) {
+    processRequest(url, data, null);
+}
+
+function processRequest(url, data, handler) {
     $.ajax({
         type: "POST",
         url: getOriginUrl() + url,
+        data: data,
         success: function (result) {
             processSuccess(result, handler);
         },

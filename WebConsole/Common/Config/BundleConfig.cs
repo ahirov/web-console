@@ -12,8 +12,8 @@ namespace WebConsole.Config
         {
             var js = new ScriptBundle("~/bundles/js");
             bundles.Add(js);
-            js.IncludeDirectory("~/Scripts/global/", "*.js", false);
-            js.IncludeDirectory("~/Scripts/job/", "*.js", false);
+            js.IncludeDirectory("~/Scripts/global/", "*.js", true);
+            js.IncludeDirectory("~/Scripts/job/", "*.js", true);
         }
     }
 }

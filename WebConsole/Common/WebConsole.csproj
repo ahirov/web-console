@@ -111,6 +111,7 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\global\wc-ajax-global.js" />
     <Content Include="Scripts\global\wc-url-global.js" />
+    <Content Include="Scripts\job\io\wc-job-reader.js" />
     <Content Include="Scripts\job\wc-job-click-events.js" />
     <Content Include="Scripts\job\wc-job-global.js" />
     <Content Include="Scripts\job\wc-job-onload-events.js" />

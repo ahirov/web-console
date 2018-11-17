@@ -3,9 +3,17 @@ See LICENSE file in the solution root for full license information
 Copyright (c) 2018 Anton Hirov */
 
 function startJobRequest(handler) {
-    processRequest("/Job/Start", handler);
+    processReadRequest("/Job/Start", handler);
 }
 
 function stopJobRequest(handler) {
-    processRequest("/Job/Stop", handler);
+    processReadRequest("/Job/Stop", handler);
+}
+
+function readJobRequest(handler) {
+    processReadRequest("/Job/Read", handler);
+}
+
+function writeJobRequest(data) {
+    processWriteRequest("/Job/Write", data);
 }

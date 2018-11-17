@@ -6,12 +6,22 @@ $(document).ready(function() {
     $(wcStartJobButtonId).click(function () {
         startJobRequest(function() {
             $(wcOutputContainerId).append("<p>Console started!!!</p>");
+            startReadJob();
         });
     });
 
     $(wcStopJobButtonId).click(function () {
         stopJobRequest(function() {
             $(wcOutputContainerId).append("<p>Console stopped!!!</p>");
+            stopReadJob();
         });
+    });
+
+    $(wcJobInputId).keypress(function (e) {
+        if (e.keyCode === 13) {
+            writeJobRequest({
+                input: $(wcJobInputId).val()
+            });
+        }
     });
 });
