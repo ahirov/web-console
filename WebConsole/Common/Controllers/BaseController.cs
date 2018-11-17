@@ -6,12 +6,16 @@ using System.Web.Mvc;
 
 namespace WebConsole.Controllers
 {
-    public class HomeController : BaseController
+    public class BaseController : Controller
     {
-        // GET: Home
-        public ActionResult Index()
+        public ActionResult Success()
         {
-            return View();
+            return Json(new {data = true});
+        }
+
+        public ActionResult Failure()
+        {
+            return Json(new {data = false});
         }
     }
 }

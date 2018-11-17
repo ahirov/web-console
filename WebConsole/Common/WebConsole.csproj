@@ -130,6 +130,7 @@
     <Compile Include="Config\RouteConfig.cs" />
     <Compile Include="Config\ViewEnginesConfig.cs" />
     <Compile Include="Config\WcViewEngine.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

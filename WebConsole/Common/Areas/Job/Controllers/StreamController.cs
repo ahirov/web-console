@@ -5,11 +5,12 @@
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using WebConsole.Controllers;
 using WebConsole.Core.Job;
 
 namespace WebConsole.Areas.Job.Controllers
 {
-    public class StreamController : Controller
+    public class StreamController : BaseController
     {
         private readonly IJobBufferHandler buffer;
         private readonly IJobReader jobReader;
@@ -43,7 +44,7 @@ namespace WebConsole.Areas.Job.Controllers
             // TODO!!!
             var job = buffer.LoadAll().First().Value;
             await jobWriter.Write(job, input);
-            return Json(new {data = true});
+            return Success();
         }
     }
 }

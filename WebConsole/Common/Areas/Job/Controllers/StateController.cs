@@ -5,11 +5,12 @@
 using System.Linq;
 using System.Web.Mvc;
 using AttachedConsole;
+using WebConsole.Controllers;
 using WebConsole.Core.Job;
 
 namespace WebConsole.Areas.Job.Controllers
 {
-    public class StateController : Controller
+    public class StateController : BaseController
     {
         private readonly IJobBufferHandler buffer;
         private readonly IJobInitializer initializer;
@@ -33,9 +34,9 @@ namespace WebConsole.Areas.Job.Controllers
             if (!buffer.LoadAll().Any())
             {
                 initializer.Init(typeof(Program));
-                return Json(new { data = true });
+                return Success();
             }
-            return Json(new {data = false});
+            return Failure();
         }
 
         //
@@ -44,7 +45,7 @@ namespace WebConsole.Areas.Job.Controllers
         public ActionResult Stop()
         {
             finalizer.Final();
-            return Json(new {data = true});
+            return Success();
         }
     }
 }
