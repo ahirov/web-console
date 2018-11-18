@@ -244,6 +244,10 @@
     <Content Include="Styles\dependencies\bootstrap-4.1.3\_color.scss" />
     <Content Include="Styles\core\scss\_container.scss" />
     <Content Include="Styles\core\scss\_link.scss" />
+    <Content Include="Styles\dependencies\bootstrap-select-1.13.3\core\bootstrap-select.scss" />
+    <Content Include="Styles\dependencies\bootstrap-select-1.13.3\core\variables.scss" />
+    <Content Include="Styles\core\scss\_select.scss" />
+    <Content Include="Styles\dependencies\bootstrap-4.1.3\_dropdown.scss" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
