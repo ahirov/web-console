@@ -18,3 +18,19 @@ Copyright (c) 2018 Anton Hirov */
     -ms-opacity: 0;
     opacity: 0;
 }
+
+@media (max-width: 767px) {
+    #wc-header-content > ul > li:last-child a {
+        /* display */
+        padding-right: 7px;
+        padding-left: 7px;
+    }
+}
+
+@media (min-width: 768px) {
+    #wc-header-content > ul > li > div.bootstrap-select,
+    #wc-header-content > ul > li > input {
+        /* display */
+        width: 220px;
+    }
+}

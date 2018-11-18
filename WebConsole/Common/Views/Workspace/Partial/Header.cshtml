@@ -2,7 +2,7 @@
 See LICENSE file in the solution root for full license information
 Copyright (c) 2018 Anton Hirov *@
 
-<nav class="navbar navbar-dark bg-dark">
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <span class="navbar-brand">
         <span id="wc-logo">
             <span>WebConsole</span>
@@ -12,7 +12,44 @@ Copyright (c) 2018 Anton Hirov *@
             <span class="wc-logo-dot">.</span>
         </span>
     </span>
-    <a href="https://github.com/hirov-anton/web-console">
-        <i class="fab fa-github fa-2x"></i>
-    </a>
+    <button class="navbar-toggler"
+            data-toggle="collapse"
+            data-target="#wc-header-content">
+        <i class="fas fa-cogs fa-lg"></i>
+    </button>
+    <div id="wc-header-content"
+         class="collapse navbar-collapse">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <select class="ml-lg-2 ml-xl-3 selectpicker">
+                    <option>App1</option>
+                    <option>App2</option>
+                </select>
+            </li>
+            <li class="nav-item">
+                <input type="text"
+                       class="form-control"
+                       placeholder="args[]"/>
+            </li>
+            <li class="nav-item">
+                <div class="d-flex">
+                    <a href="https://github.com/hirov-anton/web-console"
+                       class="d-md-none mr-auto nav-link">
+                        <i class="fab fa-github fa-lg"></i>
+                    </a>
+                    <a href="#"
+                       class="nav-link"
+                       data-toggle="tooltip"
+                       data-placement="right"
+                       title="Execute">
+                        <i class="fas fa-file-code fa-lg"></i>
+                    </a>
+                </div>
+            </li>
+        </ul>
+        <a href="https://github.com/hirov-anton/web-console"
+           class="d-none d-md-block">
+            <i class="fab fa-github fa-2x"></i>
+        </a>
+    </div>
 </nav>
