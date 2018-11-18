@@ -80,7 +80,7 @@ h1, h2, h3, h4, h5, h6 {
 
 p {
   margin-top: 0;
-  margin-bottom: 1rem;
+  margin-bottom: 0;
 }
 
 abbr[title],
@@ -154,13 +154,13 @@ sup {
 }
 
 a {
-  color: #007bff;
+  color: #fff;
   text-decoration: none;
   background-color: transparent;
   -webkit-text-decoration-skip: objects;
 }
 a:hover {
-  color: #0056b3;
+  color: #17a2b8;
   text-decoration: underline;
 }
 
@@ -2644,11 +2644,11 @@ fieldset:disabled a.btn {
 
 .btn-link {
   font-weight: 400;
-  color: #007bff;
+  color: #fff;
   background-color: transparent;
 }
 .btn-link:hover {
-  color: #0056b3;
+  color: #17a2b8;
   text-decoration: underline;
   background-color: transparent;
   border-color: transparent;
@@ -4186,13 +4186,13 @@ input[type=button].btn-block {
   padding: 0.5rem 0.75rem;
   margin-left: -1px;
   line-height: 1.25;
-  color: #007bff;
+  color: #fff;
   background-color: #fff;
   border: 1px solid #dee2e6;
 }
 .page-link:hover {
   z-index: 2;
-  color: #0056b3;
+  color: #17a2b8;
   text-decoration: none;
   background-color: #e9ecef;
   border-color: #dee2e6;
@@ -8603,6 +8603,24 @@ h3 {
     color: inherit;
     border-color: #dee2e6;
   }
+}
+/* WebConsole (https://github.com/hirov-anton/web-console)
+See LICENSE file in the solution root for full license information
+Copyright (c) 2018 Anton Hirov */
+@media (min-width: 0) and (max-width: 576px) {
+  .container {
+    padding: 0;
+  }
+
+  .container > div {
+    padding: 15px;
+  }
+}
+/* WebConsole (https://github.com/hirov-anton/web-console)
+See LICENSE file in the solution root for full license information
+Copyright (c) 2018 Anton Hirov */
+a:active {
+  color: #dc3545;
 }
 
 /*# sourceMappingURL=core.css.map */

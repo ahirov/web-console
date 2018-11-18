@@ -2,8 +2,6 @@
 See LICENSE file in the solution root for full license information
 Copyright (c) 2018 Anton Hirov */
 
-@import "color";
-@import "link";
-@import "text";
-
-@import "core/bootstrap";
+a:active{
+    color: $danger;
+}
