@@ -17,11 +17,14 @@ namespace WebConsole.Config
 
             var css = new StyleBundle("~/bundles/css");
             bundles.Add(css);
+            Include("~/Styles/core/", css, false);
             Include("~/Styles/global/", css);
             Include("~/Styles/io/", css);
         }
 
-        private static void Include(string path, Bundle bundle)
+        private static void Include(string path,
+                                    Bundle bundle,
+                                    bool searchSubDirectories = true)
         {
             var extension = bundle is ScriptBundle
                 ? "*.js"
@@ -29,7 +32,7 @@ namespace WebConsole.Config
                     ? "*.css"
                     : null;
             if (extension != null)
-                bundle.IncludeDirectory(path, extension, true);
+                bundle.IncludeDirectory(path, extension, searchSubDirectories);
         }
     }
 }
