@@ -34,6 +34,9 @@
     <Reference Include="Autofac, Version=4.8.1.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Autofac.4.8.1\lib\net45\Autofac.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
@@ -46,14 +49,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationStorage.cs" />
+    <Compile Include="Entities\JobInfo.cs" />
+    <Compile Include="Exceptions\JobConfigMissingDataException.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Extensions\XObjectExtensions.cs" />
     <Compile Include="IoC\WebShellModule.cs" />
+    <Compile Include="Job\Info\JobInfoProvider.cs" />
+    <Compile Include="Job\IO\JobConfigReader.cs" />
     <Compile Include="Job\JobBufferHandler.cs" />
     <Compile Include="Job\JobFinalizer.cs" />
     <Compile Include="Job\JobInitializer.cs" />
-    <Compile Include="Job\JobReader.cs" />
-    <Compile Include="Job\JobWriter.cs" />
+    <Compile Include="Job\IO\JobReader.cs" />
+    <Compile Include="Job\IO\JobWriter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StorageKeys.cs" />
+    <Compile Include="ApplicationConstants.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using WebConsole.Controllers;
 using WebConsole.Core.Job;
+using WebConsole.Core.Job.IO;
 
 namespace WebConsole.Areas.Job.Controllers
 {

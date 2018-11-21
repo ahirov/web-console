@@ -3,6 +3,9 @@ See LICENSE file in the solution root for full license information
 Copyright (c) 2018 Anton Hirov */
 
 .wc-io-area {
+    /* display */
+    margin-top: 8rem;
+
     /* font */
     font-family: monospace;
 

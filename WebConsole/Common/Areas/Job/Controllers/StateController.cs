@@ -28,14 +28,14 @@ namespace WebConsole.Areas.Job.Controllers
         //
         // POST: /Job/State/Start
         [HttpPost]
-        public ActionResult Start()
+        public ActionResult Start(string location, string args)
         {
             // TODO Temp limit to one job!!! 
-            if (!buffer.LoadAll().Any())
-            {
-                initializer.Init(typeof(Program));
-                return Success();
-            }
+//            if (!buffer.LoadAll().Any())
+//            {
+//                initializer.Init(typeof(Program));
+//                return Success();
+//            }
             return Failure();
         }
 

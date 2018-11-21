@@ -18,4 +18,17 @@ $(document).ready(function () {
         });
     };
     animateLogo();
+    getAllJobsRequest(function (data) {
+        var list = $(wcJobsListId);
+        var jobs = JSON.parse(data);
+
+        for (var index in jobs) {
+            var job = jobs[index]; 
+            $.CreateOption()
+             .append(job.name)
+             .data("location", job.location)
+             .appendTo(list);
+        }
+        list.selectpicker("refresh");
+    });
 });

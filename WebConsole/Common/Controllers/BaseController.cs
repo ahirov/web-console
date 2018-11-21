@@ -17,5 +17,10 @@ namespace WebConsole.Controllers
         {
             return Json(new {data = false});
         }
+
+        public ActionResult ReturnData(string data)
+        {
+            return Json(new {data});
+        }
     }
 }

@@ -2,6 +2,7 @@
 // See LICENSE file in the solution root for full license information
 // Copyright (c) 2018 Anton Hirov
 
+using System;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
@@ -32,6 +33,22 @@ namespace WebConsole
         protected void Application_End()
         {
             finalizer.Final();
+        }
+
+        protected void Application_Error(object sender, EventArgs e)
+        {
+            // TODO Add errors handler!!!
+            var server = Context.Server;
+            var error = server.GetLastError();
+            var code = (error as HttpException)?.GetHttpCode() ?? 500;
+            if (code != 404)
+            {
+
+            }
+            server.ClearError();
+
+            var response = Context.Response;
+            response.Clear();
         }
     }
 }

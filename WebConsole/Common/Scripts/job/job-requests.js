@@ -2,8 +2,12 @@
 See LICENSE file in the solution root for full license information
 Copyright (c) 2018 Anton Hirov */
 
-function startJobRequest(handler) {
-    processReadRequest("/Job/State/Start", handler);
+function getAllJobsRequest(handler) {
+    processReadRequest("/Job/Global/GetAll", handler);
+}
+
+function startJobRequest(data, handler) {
+    processRequest("/Job/State/Start", data, handler);
 }
 
 function stopJobRequest(handler) {

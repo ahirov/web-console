@@ -5,18 +5,18 @@
 using System.Diagnostics;
 using System.Threading.Tasks;
 
-namespace WebConsole.Core.Job
+namespace WebConsole.Core.Job.IO
 {
-    public interface IJobReader
+    public interface IJobWriter
     {
-        Task<string> Read(Process job);
+        Task Write(Process job, string input);
     }
 
-    public class JobReader : IJobReader
+    public class JobWriter : IJobWriter
     {
-        public Task<string> Read(Process job)
+        public Task Write(Process job, string input)
         {
-            return job.StandardOutput.ReadLineAsync();
+            return job.StandardInput.WriteLineAsync(input);
         }
     }
 }

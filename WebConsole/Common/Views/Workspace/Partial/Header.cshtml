@@ -21,13 +21,12 @@ Copyright (c) 2018 Anton Hirov *@
          class="collapse navbar-collapse">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <select class="ml-lg-2 ml-xl-3 selectpicker">
-                    <option>App1</option>
-                    <option>App2</option>
-                </select>
+                <select id="wc-jobs-list"
+                        class="ml-lg-2 ml-xl-3 selectpicker"></select>
             </li>
             <li class="nav-item">
                 <input type="text"
+                       id="wc-job-args"
                        class="form-control"
                        placeholder="args[]"/>
             </li>
@@ -38,6 +37,7 @@ Copyright (c) 2018 Anton Hirov *@
                         <i class="fab fa-github fa-lg"></i>
                     </a>
                     <a href="#"
+                       id="wc-start-job-button"
                        class="nav-link"
                        data-toggle="tooltip"
                        data-placement="right"

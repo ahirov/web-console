@@ -55,8 +55,8 @@
       <HintPath>..\..\packages\Autofac.Mvc5.4.0.2\lib\net45\Autofac.Integration.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Newtonsoft.Json.5.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.Web" />
     <Reference Include="System.Web.DynamicData" />
@@ -109,14 +109,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
-    <Content Include="Scripts\global\wc-ajax-global.js" />
-    <Content Include="Scripts\global\wc-events-global.js" />
-    <Content Include="Scripts\global\wc-url-global.js" />
-    <Content Include="Scripts\job\io\wc-job-reader.js" />
-    <Content Include="Scripts\job\wc-job-click-events.js" />
-    <Content Include="Scripts\job\wc-job-global.js" />
-    <Content Include="Scripts\job\wc-job-onload-events.js" />
-    <Content Include="Scripts\job\wc-job-requests.js" />
+    <Content Include="job.xml" />
+    <Content Include="Scripts\global\ajax-global.js" />
+    <Content Include="Scripts\global\events-global.js" />
+    <Content Include="Scripts\global\global.js" />
+    <Content Include="Scripts\global\extensions\jquery-extensions.js" />
+    <Content Include="Scripts\global\url-global.js" />
+    <Content Include="Scripts\job\io\job-io-reader.js" />
+    <Content Include="Scripts\job\job-click-events.js" />
+    <Content Include="Scripts\job\job-global.js" />
+    <Content Include="Scripts\job\job-onload-events.js" />
+    <Content Include="Scripts\job\job-requests.js" />
     <Content Include="Styles\core\core.css" />
     <Content Include="Styles\core\core.css.map" />
     <Content Include="Styles\core\core.min.css" />
@@ -129,6 +132,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Areas\Job\Controllers\GlobalController.cs" />
     <Compile Include="Areas\Job\Controllers\StreamController.cs" />
     <Compile Include="Areas\Job\Controllers\StateController.cs" />
     <Compile Include="Areas\Job\JobAreaRegistration.cs" />

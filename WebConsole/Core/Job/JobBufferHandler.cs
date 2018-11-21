@@ -4,7 +4,7 @@
 
 using System.Collections.Generic;
 using System.Diagnostics;
-using static WebConsole.Core.StorageKeys;
+using static WebConsole.Core.ApplicationConstants;
 
 namespace WebConsole.Core.Job
 {
@@ -27,23 +27,23 @@ namespace WebConsole.Core.Job
 
         public void Init()
         {
-            buffer[JobSet] = new Dictionary<int, Process>();
+            buffer[JobSetKey] = new Dictionary<int, Process>();
         }
 
         public void Save(Process job)
         {
-            buffer.Action(JobSet, set => set[job.Id] = job);
+            buffer.Action(JobSetKey, set => set[job.Id] = job);
         }
 
         public Process Load(int id)
         {
             // TODO Add job checking!!!
-            return buffer[JobSet][id];
+            return buffer[JobSetKey][id];
         }
 
         public Dictionary<int, Process> LoadAll()
         {
-            return buffer[JobSet];
+            return buffer[JobSetKey];
         }
     }
 }
