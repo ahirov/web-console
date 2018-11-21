@@ -1,0 +1,19 @@
+﻿/* WebConsole (https://github.com/hirov-anton/web-console)
+See LICENSE file in the solution root for full license information
+Copyright (c) 2018 Anton Hirov */
+
+.wc-area-footer {
+    /* display */
+    height: 1.2rem;
+
+    /* font */
+    font-size: 0.8rem;
+
+    /* color */
+    background-color: #6c757d;
+}
+
+.wc-area-footer > p {
+    /* display */
+    padding: 0 5px;
+}

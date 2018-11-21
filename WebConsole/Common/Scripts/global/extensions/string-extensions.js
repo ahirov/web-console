@@ -2,13 +2,6 @@
 See LICENSE file in the solution root for full license information
 Copyright (c) 2018 Anton Hirov */
 
-.wc-io-area-header {
-    /* display */
-    height: 1.5rem;
-}
-
-.wc-io-area-header > a,
-.wc-io-area-header > span {
-    /* display */
-    padding: 0 5px;
-}
+String.prototype.GetName = function() {
+    return this.slice(1);
+};

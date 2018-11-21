@@ -110,25 +110,31 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="job.xml" />
+    <Content Include="Scripts\area\area-creator.js" />
+    <Content Include="Scripts\area\area-header-creator.js" />
     <Content Include="Scripts\global\ajax-global.js" />
     <Content Include="Scripts\global\events-global.js" />
+    <Content Include="Scripts\global\extensions\string-extensions.js" />
     <Content Include="Scripts\global\global.js" />
     <Content Include="Scripts\global\extensions\jquery-extensions.js" />
     <Content Include="Scripts\global\url-global.js" />
+    <Content Include="Scripts\area\area-global.js" />
     <Content Include="Scripts\job\io\job-io-reader.js" />
     <Content Include="Scripts\job\job-click-events.js" />
     <Content Include="Scripts\job\job-global.js" />
     <Content Include="Scripts\job\job-onload-events.js" />
     <Content Include="Scripts\job\job-requests.js" />
+    <Content Include="Styles\area\area-container.css" />
+    <Content Include="Styles\area\area-content.css" />
     <Content Include="Styles\core\core.css" />
     <Content Include="Styles\core\core.css.map" />
     <Content Include="Styles\core\core.min.css" />
-    <Content Include="Styles\io\wc-io-area-footer.css" />
-    <Content Include="Styles\io\wc-io-area-header.css" />
-    <Content Include="Styles\io\wc-io-area.css" />
-    <Content Include="Styles\global\wc-footer.css" />
-    <Content Include="Styles\global\wc-global.css" />
-    <Content Include="Styles\global\wc-header.css" />
+    <Content Include="Styles\area\area-footer.css" />
+    <Content Include="Styles\area\area-header.css" />
+    <Content Include="Styles\area\area.css" />
+    <Content Include="Styles\global\footer.css" />
+    <Content Include="Styles\global\global.css" />
+    <Content Include="Styles\global\header.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

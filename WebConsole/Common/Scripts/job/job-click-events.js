@@ -4,9 +4,12 @@ Copyright (c) 2018 Anton Hirov */
 
 $(document).ready(function() {
     $(wcStartJobButtonId).click(function () {
+        var selected = $(wcJobsListId).find(":selected");
+        var container = $(wcAreaContainerId).empty();
+
+        createNewArea("0000", selected.val(), container);
         startJobRequest({
-                location: $(wcJobsListId).find(":selected")
-                                         .data("location"),
+                location: selected.data("location"),
                 args: $(wcJobArgsId).val()
             },
             function() {

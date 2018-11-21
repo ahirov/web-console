@@ -1,0 +1,21 @@
+﻿/* WebConsole (https://github.com/hirov-anton/web-console)
+See LICENSE file in the solution root for full license information
+Copyright (c) 2018 Anton Hirov */
+
+.wc-area-content {
+    /* display */
+    height: 28rem;
+
+    /* border */
+    border-top: 1px black solid;
+    border-bottom: 1px black solid;
+
+    /* color */
+    background-color: #343a40;
+}
+
+.wc-area-content > p,
+.wc-area-content > span {
+    /* display */
+    padding: 0 5px;
+}

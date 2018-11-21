@@ -2,30 +2,15 @@
 See LICENSE file in the solution root for full license information
 Copyright (c) 2018 Anton Hirov */
 
-.wc-io-area {
-    /* display */
-    margin-top: 8rem;
-
-    /* font */
-    font-family: monospace;
-
+.wc-area {
     /* border */
     border: 1px black solid;
 }
 
-.wc-io-area-content {
-    /* display */
-    height: 28rem;
-
-    /* border */
-    border-top: 1px black solid;
-    border-bottom: 1px black solid;
-}
-
-.wc-io-area-content > p,
-.wc-io-area-content > span {
-    /* display */
-    padding: 0 5px;
+.wc-area p,
+.wc-area span {
+    /* color */
+    color: #fff;
 }
 
 .wc-blinking-cursor {

@@ -13,13 +13,14 @@ namespace WebConsole.Config
             var js = new ScriptBundle("~/bundles/js");
             bundles.Add(js);
             Include("~/Scripts/global/", js);
+            Include("~/Scripts/area/", js);
             Include("~/Scripts/job/", js);
 
             var css = new StyleBundle("~/bundles/css");
             bundles.Add(css);
             Include("~/Styles/core/", css, false);
             Include("~/Styles/global/", css);
-            Include("~/Styles/io/", css);
+            Include("~/Styles/area/", css);
         }
 
         private static void Include(string path,
