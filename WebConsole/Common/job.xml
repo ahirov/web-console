@@ -2,6 +2,9 @@
 <configuration>
   <settings></settings>
   <jobs>
-    <job location="Q:\SciModule\SciConsoleApplication.exe">SciConsoleApplication</job>
+    <job namespace="Sci"
+         location="Q:\SciModule\SciConsoleApplication.exe">
+      SciConsoleApplication
+    </job>
   </jobs>
 </configuration>

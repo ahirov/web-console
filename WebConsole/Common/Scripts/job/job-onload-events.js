@@ -25,8 +25,9 @@ $(document).ready(function () {
         for (var index in jobs) {
             var job = jobs[index]; 
             $.CreateOption()
-             .append(job.name)
              .data("location", job.location)
+             .attr("title", job.name)
+             .append(job.fullName)
              .appendTo(list);
         }
         list.selectpicker("refresh");

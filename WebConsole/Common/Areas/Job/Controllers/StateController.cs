@@ -4,7 +4,6 @@
 
 using System.Linq;
 using System.Web.Mvc;
-using AttachedConsole;
 using WebConsole.Controllers;
 using WebConsole.Core.Job;
 

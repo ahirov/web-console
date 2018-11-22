@@ -14,11 +14,11 @@ namespace WebConsole.Areas.Job.Controllers
 {
     public class GlobalController : BaseController
     {
-        private readonly IJobInfoProvider jobInfoProvider;
+        private readonly IJobInfoSetProvider jobInfoSetProvider;
 
-        public GlobalController(IJobInfoProvider jobInfoProvider)
+        public GlobalController(IJobInfoSetProvider jobInfoSetProvider)
         {
-            this.jobInfoProvider = jobInfoProvider;
+            this.jobInfoSetProvider = jobInfoSetProvider;
         }
 
         //
@@ -30,7 +30,7 @@ namespace WebConsole.Areas.Job.Controllers
             // or
             // use jobs.xml configuration file!!!
             var jobs = new List<Type> {typeof(Program)};
-            var set = jobInfoProvider.GetJobInfoSet(jobs);
+            var set = jobInfoSetProvider.GetAll(jobs);
             return ReturnData(JsonConvert.SerializeObject(set));
         }
     }

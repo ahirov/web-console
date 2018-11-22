@@ -13,8 +13,9 @@ namespace WebConsole.Core
         public const string JobConfigFile = "job.xml";
 
         // CODE
-        public const string JobsName     = "jobs";
-        public const string LocationName = "location";
+        public const string JobsName      = "jobs";
+        public const string LocationName  = "location";
+        public const string NamespaceName = "namespace";
 
     }
 }

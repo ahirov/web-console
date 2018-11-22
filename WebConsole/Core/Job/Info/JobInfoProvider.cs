@@ -3,41 +3,33 @@
 // Copyright (c) 2018 Anton Hirov
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using WebConsole.Core.Entities;
-using WebConsole.Core.Job.IO;
 
 namespace WebConsole.Core.Job.Info
 {
     public interface IJobInfoProvider
     {
-        List<JobInfo> GetJobInfoSet(List<Type> customJobs);
+        JobInfo Get(Type type);
     }
 
     public class JobInfoProvider : IJobInfoProvider
     {
-        private readonly IJobConfigReader configReader;
+        private readonly IJobIdProvider idProvider;
 
-        public JobInfoProvider(IJobConfigReader configReader)
+        public JobInfoProvider(IJobIdProvider idProvider)
         {
-            this.configReader = configReader;
+            this.idProvider = idProvider;
         }
 
-        public List<JobInfo> GetJobInfoSet(List<Type> customJobs)
+        public JobInfo Get(Type type)
         {
-            var jobs = configReader.ReadJobs();
-            jobs.AddRange(Get(customJobs));
-            return jobs.OrderBy(info => info.Name).ToList();
-        }
-
-        private static List<JobInfo> Get(IEnumerable<Type> jobs)
-        {
-            return jobs.Select(type => new JobInfo
+            return new JobInfo
             {
-                Name     = type.FullName,
+                Id = idProvider.GetId(),
+                Name = type.Name,
+                FullName = type.FullName,
                 Location = type.Assembly.Location
-            }).ToList();
+            };
         }
     }
 }

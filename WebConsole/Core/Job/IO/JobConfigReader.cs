@@ -2,50 +2,42 @@
 // See LICENSE file in the solution root for full license information
 // Copyright (c) 2018 Anton Hirov
 
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using System.Xml.Linq;
 using WebConsole.Core.Entities;
 using WebConsole.Core.Exceptions;
 using WebConsole.Core.Extensions;
+using WebConsole.Core.Job.Info;
 using static WebConsole.Core.ApplicationConstants;
 
 namespace WebConsole.Core.Job.IO
 {
     public interface IJobConfigReader
     {
-        List<JobInfo> ReadJobs();
+        JobInfo Read(XElement element);
     }
 
     public class JobConfigReader : IJobConfigReader
     {
-        public List<JobInfo> ReadJobs()
-        {
-            var dir = AppDomain.CurrentDomain.BaseDirectory;
-            var path = Path.Combine(dir, JobConfigFile);
-            var file = File.ReadAllText(path);
+        private readonly IJobIdProvider idProvider;
 
-            var root = XDocument.Parse(file).Root;
-            return !root.HasValue()
-                ? throw new JobConfigMissingDataException()
-                : root.Element(JobsName)
-                      .Elements()
-                      .Select(GetJobInfo)
-                      .ToList();
+        public JobConfigReader(IJobIdProvider idProvider)
+        {
+            this.idProvider = idProvider;
         }
 
-        private static JobInfo GetJobInfo(XElement element)
+        public JobInfo Read(XElement element)
         {
-            var name     = element.Value;
+            var name = element.Value;
             var location = element.Attribute(LocationName)?.Value;
+            var ns = element.Attribute(NamespaceName)?.Value;
 
             return !name.HasValue() || !location.HasValue()
                 ? throw new JobConfigMissingDataException()
                 : new JobInfo
                 {
+                    Id = idProvider.GetId(),
                     Name = name.Trim(),
+                    FullName = $"{ns.Trim()}.{name.Trim()}",
                     Location = location.Trim()
                 };
         }

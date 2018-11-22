@@ -54,8 +54,11 @@
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Extensions\XObjectExtensions.cs" />
     <Compile Include="IoC\WebShellModule.cs" />
+    <Compile Include="Job\Info\JobIdProvider.cs" />
     <Compile Include="Job\Info\JobInfoProvider.cs" />
+    <Compile Include="Job\Info\JobInfoSetProvider.cs" />
     <Compile Include="Job\IO\JobConfigReader.cs" />
+    <Compile Include="Job\IO\JobSetConfigReader.cs" />
     <Compile Include="Job\JobBufferHandler.cs" />
     <Compile Include="Job\JobFinalizer.cs" />
     <Compile Include="Job\JobInitializer.cs" />
