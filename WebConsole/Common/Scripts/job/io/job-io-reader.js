@@ -7,6 +7,7 @@ window.isReadJob = false;
 function startReadJob() {
     window.isReadJob = true;
     var handler = function (output) {
+        // TODO Error!!!
         if (window.isReadJob) {
             $.CreateParagraph()
              .append(output)

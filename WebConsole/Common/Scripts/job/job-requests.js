@@ -15,7 +15,7 @@ function stopJobRequest(data, handler) {
 }
 
 function stopJobsRequest(handler) {
-    processRequest("/Job/State/StopAll", handler);
+    processReadRequest("/Job/State/StopAll", handler);
 }
 
 function readJobRequest(handler) {

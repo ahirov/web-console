@@ -16,7 +16,7 @@ function loadStorage() {
     }
 }
 
-function cleadStorage() {
+function clearStorage() {
     window.sessionStorage.clear();
 }
 

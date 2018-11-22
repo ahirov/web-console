@@ -2,6 +2,7 @@
 See LICENSE file in the solution root for full license information
 Copyright (c) 2018 Anton Hirov */
 
+var wcTabContainerId  = "#wc-tab-container";
 var wcAreaContainerId = "#wc-area-container";
 var wcAreaDefaultContainerId = "#wc-area-default-content";
 

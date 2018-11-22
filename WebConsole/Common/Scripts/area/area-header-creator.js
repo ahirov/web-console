@@ -16,12 +16,13 @@ function createAreaHeader(title, container) {
 
     $.CreateLink()
      .append($.CreateIcon("far", "fa-window-minimize"))
-     .appendTo(header);
+     .appendTo(header)
+     .click(areaMinimizeButtonEvent);
     $.CreateLink()
      .append($.CreateIcon("far", "fa-window-maximize"))
      .appendTo(header);
     $.CreateLink()
-     .click(stopJobButtonEvent)
      .append($.CreateIcon("far", "fa-window-close"))
-     .appendTo(header);
+     .appendTo(header)
+     .click(areaCloseButtonEvent);
 }

@@ -6,9 +6,7 @@ $(document).ready(function() {
     $(wcStartJobButtonId).click(function () {
         var job = $(wcJobsListId).find(":selected")
                                  .data("job");
-        var container = $(wcAreaContainerId).empty();
-
-        createArea(job, container);
+        createArea(job);
         startJobRequest({
                 id: job.id,
                 location: job.location,
@@ -34,19 +32,4 @@ function areaContentKeyPressEvent(event) {
         $(wcAreaContentInputClass).val("");
         writeJobRequest({ input });
     }
-}
-
-function stopJobButtonEvent() {
-    $(wcAreaStatusClass).text("stopping...");
-    stopReadJob();
-
-    var jobId = $(wcAreaClass).data("id");
-    stopJobRequest({ id: jobId }, function () {
-        removeJob(jobId);
-        var defaultContainer = $.CreateDiv()
-                                .attr("id", wcAreaDefaultContainerId.GetName())
-                                .append("No active jobs...");
-        $(wcAreaContainerId).html(defaultContainer);
-    });
-    return false;
 }

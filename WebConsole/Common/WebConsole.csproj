@@ -110,8 +110,10 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="job.xml" />
+    <Content Include="Scripts\area\area-click-events.js" />
     <Content Include="Scripts\area\area-creator.js" />
     <Content Include="Scripts\area\area-header-creator.js" />
+    <Content Include="Scripts\area\area-tab-creator.js" />
     <Content Include="Scripts\global\global-ajax.js" />
     <Content Include="Scripts\global\global-events.js" />
     <Content Include="Scripts\global\extensions\string-extensions.js" />
@@ -132,6 +134,7 @@
     <Content Include="Scripts\job\job-unload-events.js" />
     <Content Include="Styles\area\area-container.css" />
     <Content Include="Styles\area\area-content.css" />
+    <Content Include="Styles\area\area-tab.css" />
     <Content Include="Styles\core\core.css" />
     <Content Include="Styles\core\core.css.map" />
     <Content Include="Styles\core\core.min.css" />

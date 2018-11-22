@@ -2,7 +2,8 @@
 See LICENSE file in the solution root for full license information
 Copyright (c) 2018 Anton Hirov */
 
-function createArea(job, container) {
+function createArea(job) {
+    var container = $(wcAreaContainerId).empty();
     var area = $.CreateDiv()
                 .addClass(wcAreaClass.GetName())
                 .data("id", job.id)
@@ -33,4 +34,13 @@ function createArea(job, container) {
      .appendTo(footer);
 
     area.fadeIn();
+}
+
+function createDefaultArea() {
+    var defaultContainer = $.CreateDiv()
+                            .attr("id", wcAreaDefaultContainerId.GetName())
+                            .append("No active jobs...")
+                            .hide();
+    $(wcAreaContainerId).empty().html(defaultContainer);
+    defaultContainer.fadeIn();
 }
