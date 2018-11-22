@@ -2,14 +2,13 @@
 // See LICENSE file in the solution root for full license information
 // Copyright (c) 2018 Anton Hirov
 
-using System;
 using System.Diagnostics;
 
 namespace WebConsole.Core.Job
 {
     public interface IJobInitializer
     {
-        void Init(Type type);
+        void Init(string location);
     }
 
     public class JobInitializer : IJobInitializer
@@ -21,16 +20,16 @@ namespace WebConsole.Core.Job
             this.handler = handler;
         }
 
-        public void Init(Type type)
+        public void Init(string location)
         {
-            handler.Save(Process.Start(GetInfo(type)));
+            handler.Save(Process.Start(GetInfo(location)));
         }
 
-        private static ProcessStartInfo GetInfo(Type type)
+        private static ProcessStartInfo GetInfo(string location)
         {
             return new ProcessStartInfo
             {
-                FileName = type.Assembly.Location,
+                FileName = location,
                 RedirectStandardInput  = true,
                 RedirectStandardOutput = true,
                 UseShellExecute = false,

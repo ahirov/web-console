@@ -14,8 +14,21 @@ Copyright (c) 2018 Anton Hirov */
     background-color: #343a40;
 }
 
-.wc-area-content > p,
-.wc-area-content > span {
+.wc-area-content-input {
+    /* display */
+    outline: none;
+    width: 100%;
+
+    /* border */
+    border: 0;
+
+    /* color */
+    background-color: #343a40;
+    color: #fff;
+}
+
+.wc-area-content-input,
+.wc-area-content-output {
     /* display */
     padding: 0 5px;
 }

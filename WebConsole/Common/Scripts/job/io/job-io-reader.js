@@ -6,10 +6,11 @@ window.isReadJob = false;
 
 function startReadJob() {
     window.isReadJob = true;
-    $(wcJobInputId).prop("disabled", false);
     var handler = function (output) {
         if (window.isReadJob) {
-            $(wcOutputContainerId).append("<p>" + output + "</p>");
+            $.CreateParagraph()
+             .append(output)
+             .appendTo($(wcAreaContentOutputClass));
             readJobRequest(handler);
         }
     };
@@ -18,5 +19,4 @@ function startReadJob() {
 
 function stopReadJob() {
     window.isReadJob = false;
-    $(wcJobInputId).prop("disabled", true);
 }

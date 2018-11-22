@@ -31,11 +31,11 @@ namespace WebConsole.Areas.Job.Controllers
         public ActionResult Start(string location, string args)
         {
             // TODO Temp limit to one job!!! 
-//            if (!buffer.LoadAll().Any())
-//            {
-//                initializer.Init(typeof(Program));
-//                return Success();
-//            }
+            if (!buffer.LoadAll().Any())
+            {
+                initializer.Init(location);
+                return Success();
+            }
             return Failure();
         }
 

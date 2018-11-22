@@ -7,7 +7,7 @@ function processReadRequest(url, handler) {
 }
 
 function processWriteRequest(url, data) {
-    processRequest(url, JSON.stringify(data), null);
+    processRequest(url, data, null);
 }
 
 function processRequest(url, data, handler) {

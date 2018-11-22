@@ -18,6 +18,10 @@ $.CreateLink = function() {
     return $("<a></a>").attr("href", "#");
 };
 
+$.CreateInput = function () {
+    return $("<input>");
+};
+
 $.CreateOption = function() {
     return $("<option></option>");
 };

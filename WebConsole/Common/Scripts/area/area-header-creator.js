@@ -21,6 +21,7 @@ function createAreaHeader(id, title, container) {
      .append($.CreateIcon("far", "fa-window-maximize"))
      .appendTo(header);
     $.CreateLink()
+     .click(stopJobButtonEvent)
      .append($.CreateIcon("far", "fa-window-close"))
      .appendTo(header);
 }

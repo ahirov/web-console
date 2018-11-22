@@ -7,31 +7,40 @@ $(document).ready(function() {
         var selected = $(wcJobsListId).find(":selected");
         var container = $(wcAreaContainerId).empty();
 
-        createNewArea("0000", selected.val(), container);
+        createArea("0000", selected.val(), container);
         startJobRequest({
                 location: selected.data("location"),
                 args: $(wcJobArgsId).val()
             },
             function() {
-                //$(wcOutputContainerId).append("<p>Console started!!!</p>");
-                //startReadJob();
+                var status = $.CreateParagraph()
+                              .append("working...");
+                $(wcAreaFooterClass).html(status);
+                startReadJob();
             });
         return false;
-    });
-
-    $(wcStopJobButtonId).click(function () {
-        stopJobRequest(function() {
-            //$(wcOutputContainerId).append("<p>Console stopped!!!</p>");
-            //stopReadJob();
-        });
-        return false;
-    });
-
-    $(wcJobInputId).keypress(function (e) {
-        if (e.keyCode === 13) {
-            writeJobRequest({
-                input: $(wcJobInputId).val()
-            });
-        }
     });
 });
+
+function areaContentKeyPressEvent(event) {
+    var keyCode = event.keyCode;
+    if (keyCode === 13) {
+        var input = $(wcAreaContentInputClass).val();
+        $.CreateParagraph()
+         .append(input)
+         .appendTo($(wcAreaContentOutputClass));
+
+        $(wcAreaContentInputClass).val("");
+        writeJobRequest({ input });
+    }
+}
+
+function stopJobButtonEvent() {
+    stopJobRequest(function () {
+        var status = $.CreateParagraph()
+                      .append("stopping...");
+        $(wcAreaFooterClass).html(status);
+        stopReadJob();
+    });
+    return false;
+}
