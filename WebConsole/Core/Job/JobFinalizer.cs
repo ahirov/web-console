@@ -6,21 +6,34 @@ namespace WebConsole.Core.Job
 {
     public interface IJobFinalizer
     {
-        void Final();
+        bool Final(string id);
+        void FinalAll();
     }
 
     public class JobFinalizer : IJobFinalizer
     {
-        private readonly IJobBufferHandler handler;
+        private readonly IJobBufferHandler buffer;
 
-        public JobFinalizer(IJobBufferHandler handler)
+        public JobFinalizer(IJobBufferHandler buffer)
         {
-            this.handler = handler;
+            this.buffer = buffer;
         }
 
-        public void Final()
+        public bool Final(string id)
         {
-            var processes = handler.LoadAll();
+            var processes = buffer.LoadAll();
+            var containsId = processes.ContainsKey(id);
+            if (containsId)
+            {
+                buffer.Load(id).Dispose();
+                processes.Remove(id);
+            }
+            return containsId;
+        }
+
+        public void FinalAll()
+        {
+            var processes = buffer.LoadAll();
             foreach (var process in processes)
                 process.Value.Dispose();
             processes.Clear();

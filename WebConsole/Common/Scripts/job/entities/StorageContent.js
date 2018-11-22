@@ -2,8 +2,11 @@
 See LICENSE file in the solution root for full license information
 Copyright (c) 2018 Anton Hirov */
 
-$(document).ready(function() {
-    $(function() {
-        $('[data-toggle="tooltip"]').tooltip();
-    });
-});
+function StorageContent(obj) {
+    if (obj) {
+        this.jobs = obj.jobs;
+    } else {
+        this.jobs = {};
+    }
+    this.__type__ = ContentType.STORAGE;
+}

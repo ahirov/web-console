@@ -2,7 +2,7 @@
 See LICENSE file in the solution root for full license information
 Copyright (c) 2018 Anton Hirov */
 
-function createAreaHeader(id, title, container) {
+function createAreaHeader(title, container) {
     var header = $.CreateDiv()
                   .addClass("d-flex")
                   .addClass("align-items-center")

@@ -10,8 +10,12 @@ function startJobRequest(data, handler) {
     processRequest("/Job/State/Start", data, handler);
 }
 
-function stopJobRequest(handler) {
-    processReadRequest("/Job/State/Stop", handler);
+function stopJobRequest(data, handler) {
+    processRequest("/Job/State/Stop", data, handler);
+}
+
+function stopJobsRequest(handler) {
+    processRequest("/Job/State/StopAll", handler);
 }
 
 function readJobRequest(handler) {

@@ -2,16 +2,18 @@
 See LICENSE file in the solution root for full license information
 Copyright (c) 2018 Anton Hirov */
 
-function createArea(id, title, container) {
+function createArea(job, container) {
     var area = $.CreateDiv()
                 .addClass(wcAreaClass.GetName())
+                .data("id", job.id)
                 .hide()
                 .appendTo(container);
 
-    createAreaHeader(id, title, area);
+    createAreaHeader(job.fullName, area);
 
     var output = $.CreateDiv()
-                  .addClass(wcAreaContentOutputClass.GetName());
+                 .addClass(wcAreaContentOutputClass.GetName())
+                 .html(job.content);
     var input = $.CreateInput()
                  .addClass(wcAreaContentInputClass.GetName())
                  .keydown(areaContentKeyPressEvent);
@@ -26,7 +28,8 @@ function createArea(id, title, container) {
                   .addClass(wcAreaFooterClass.GetName())
                   .appendTo(area);
     $.CreateParagraph()
-     .text("initializing...")
+     .addClass(wcAreaStatusClass.GetName())
+     .text(job.status)
      .appendTo(footer);
 
     area.fadeIn();

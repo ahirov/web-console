@@ -8,21 +8,24 @@ namespace WebConsole.Core.Job
 {
     public interface IJobInitializer
     {
-        void Init(string location);
+        bool Init(string id, string location);
     }
 
     public class JobInitializer : IJobInitializer
     {
-        private readonly IJobBufferHandler handler;
+        private readonly IJobBufferHandler buffer;
 
-        public JobInitializer(IJobBufferHandler handler)
+        public JobInitializer(IJobBufferHandler buffer)
         {
-            this.handler = handler;
+            this.buffer = buffer;
         }
 
-        public void Init(string location)
+        public bool Init(string id, string location)
         {
-            handler.Save(Process.Start(GetInfo(location)));
+            var notContainsId = !buffer.LoadAll().ContainsKey(id);
+            if (notContainsId)
+                buffer.Save(id, Process.Start(GetInfo(location)));
+            return notContainsId;
         }
 
         private static ProcessStartInfo GetInfo(string location)

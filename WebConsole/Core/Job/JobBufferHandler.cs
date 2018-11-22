@@ -11,37 +11,37 @@ namespace WebConsole.Core.Job
     public interface IJobBufferHandler
     {
         void Init();
-        void Save(Process job);
-        Process Load(int id);
-        Dictionary<int, Process> LoadAll();
+        void Save(string id, Process job);
+        Process Load(string id);
+        Dictionary<string, Process> LoadAll();
     }
 
     public class JobBufferHandler : IJobBufferHandler
     {
-        private readonly IApplicationStorage<Dictionary<int, Process>> buffer;
+        private readonly IApplicationStorage<Dictionary<string, Process>> buffer;
 
-        public JobBufferHandler(IApplicationStorage<Dictionary<int, Process>> buffer)
+        public JobBufferHandler(IApplicationStorage<Dictionary<string, Process>> buffer)
         {
             this.buffer = buffer;
         }
 
         public void Init()
         {
-            buffer[JobSetKey] = new Dictionary<int, Process>();
+            buffer[JobSetKey] = new Dictionary<string, Process>();
         }
 
-        public void Save(Process job)
+        public void Save(string id, Process job)
         {
-            buffer.Action(JobSetKey, set => set[job.Id] = job);
+            buffer.Action(JobSetKey, set => set[id] = job);
         }
 
-        public Process Load(int id)
+        public Process Load(string id)
         {
             // TODO Add job checking!!!
             return buffer[JobSetKey][id];
         }
 
-        public Dictionary<int, Process> LoadAll()
+        public Dictionary<string, Process> LoadAll()
         {
             return buffer[JobSetKey];
         }

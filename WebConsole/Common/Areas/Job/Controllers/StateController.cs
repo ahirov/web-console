@@ -2,7 +2,6 @@
 // See LICENSE file in the solution root for full license information
 // Copyright (c) 2018 Anton Hirov
 
-using System.Linq;
 using System.Web.Mvc;
 using WebConsole.Controllers;
 using WebConsole.Core.Job;
@@ -11,15 +10,12 @@ namespace WebConsole.Areas.Job.Controllers
 {
     public class StateController : BaseController
     {
-        private readonly IJobBufferHandler buffer;
         private readonly IJobInitializer initializer;
         private readonly IJobFinalizer finalizer;
 
-        public StateController(IJobBufferHandler buffer,
-                               IJobInitializer initializer,
+        public StateController(IJobInitializer initializer,
                                IJobFinalizer finalizer)
         {
-            this.buffer = buffer;
             this.initializer = initializer;
             this.finalizer = finalizer;
         }
@@ -27,23 +23,31 @@ namespace WebConsole.Areas.Job.Controllers
         //
         // POST: /Job/State/Start
         [HttpPost]
-        public ActionResult Start(string location, string args)
+        public ActionResult Start(string id,
+                                  string location,
+                                  string args)
         {
-            // TODO Temp limit to one job!!! 
-            if (!buffer.LoadAll().Any())
-            {
-                initializer.Init(location);
-                return Success();
-            }
-            return Failure();
+            return initializer.Init(id, location)
+                ? Success()
+                : Failure();
         }
 
         //
         // POST: /Job/State/Stop
         [HttpPost]
-        public ActionResult Stop()
+        public ActionResult Stop(string id)
         {
-            finalizer.Final();
+            return finalizer.Final(id)
+                ? Success()
+                : Failure();
+        }
+
+        //
+        // POST: /Job/State/StopAll
+        [HttpPost]
+        public ActionResult StopAll()
+        {
+            finalizer.FinalAll();
             return Success();
         }
     }

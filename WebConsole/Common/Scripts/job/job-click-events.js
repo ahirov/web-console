@@ -4,18 +4,19 @@ Copyright (c) 2018 Anton Hirov */
 
 $(document).ready(function() {
     $(wcStartJobButtonId).click(function () {
-        var selected = $(wcJobsListId).find(":selected");
+        var job = $(wcJobsListId).find(":selected")
+                                 .data("content");
         var container = $(wcAreaContainerId).empty();
 
-        createArea("0000", selected.val(), container);
+        createArea(job, container);
         startJobRequest({
-                location: selected.data("location"),
+                id: job.id,
+                location: job.location,
                 args: $(wcJobArgsId).val()
             },
             function() {
-                var status = $.CreateParagraph()
-                              .append("working...");
-                $(wcAreaFooterClass).html(status);
+                $(wcAreaStatusClass).text("working...");
+                saveJob(job);
                 startReadJob();
             });
         return false;
@@ -36,11 +37,16 @@ function areaContentKeyPressEvent(event) {
 }
 
 function stopJobButtonEvent() {
-    stopJobRequest(function () {
-        var status = $.CreateParagraph()
-                      .append("stopping...");
-        $(wcAreaFooterClass).html(status);
-        stopReadJob();
+    $(wcAreaStatusClass).text("stopping...");
+    stopReadJob();
+
+    var jobId = $(wcAreaClass).data("id");
+    stopJobRequest({ id: jobId }, function () {
+        removeJob(jobId);
+        var defaultContainer = $.CreateDiv()
+                                .attr("id", wcAreaDefaultContainerId.GetName())
+                                .append("No active jobs...");
+        $(wcAreaContainerId).html(defaultContainer);
     });
     return false;
 }

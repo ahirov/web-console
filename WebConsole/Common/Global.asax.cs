@@ -32,7 +32,7 @@ namespace WebConsole
 
         protected void Application_End()
         {
-            finalizer.Final();
+            finalizer.FinalAll();
         }
 
         protected void Application_Error(object sender, EventArgs e)
