@@ -11,7 +11,7 @@ $(document).ready(function () {
             var job = new JobContent(jobs[index]);
             job.status = "initializing...";
             $.CreateOption()
-             .data("content", job)
+             .data("job", job)
              .attr("title", job.name)
              .append(job.fullName)
              .appendTo(list);

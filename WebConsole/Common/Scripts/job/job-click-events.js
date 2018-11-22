@@ -5,7 +5,7 @@ Copyright (c) 2018 Anton Hirov */
 $(document).ready(function() {
     $(wcStartJobButtonId).click(function () {
         var job = $(wcJobsListId).find(":selected")
-                                 .data("content");
+                                 .data("job");
         var container = $(wcAreaContainerId).empty();
 
         createArea(job, container);
