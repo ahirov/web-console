@@ -117,6 +117,7 @@
     <Content Include="Scripts\global\global-ajax.js" />
     <Content Include="Scripts\global\global-events.js" />
     <Content Include="Scripts\global\extensions\string-extensions.js" />
+    <Content Include="Scripts\global\global-screen.js" />
     <Content Include="Scripts\global\global-storage.js" />
     <Content Include="Scripts\global\global.js" />
     <Content Include="Scripts\global\extensions\jquery-extensions.js" />

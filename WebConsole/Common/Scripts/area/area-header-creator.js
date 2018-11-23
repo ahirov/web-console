@@ -20,7 +20,8 @@ function createAreaHeader(title, container) {
      .click(areaMinimizeButtonEvent);
     $.CreateLink()
      .append($.CreateIcon("far", "fa-window-maximize"))
-     .appendTo(header);
+     .appendTo(header)
+     .click(areaMaximizeButtonEvent);
     $.CreateLink()
      .append($.CreateIcon("far", "fa-window-close"))
      .appendTo(header)

@@ -5,6 +5,7 @@ Copyright (c) 2018 Anton Hirov */
 .wc-area-content {
     /* display */
     height: 28rem;
+    min-height: 95%;
 
     /* border */
     border-top: 1px black solid;

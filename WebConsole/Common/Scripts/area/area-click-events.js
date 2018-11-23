@@ -17,6 +17,8 @@ function areaMinimizeButtonEvent() {
 }
 
 function areaMaximizeButtonEvent() {
+    var element = $(wcAreaClass).get(0);
+    toggleFullScreen(element);
     return false;
 }
 
