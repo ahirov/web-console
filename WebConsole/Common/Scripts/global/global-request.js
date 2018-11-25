@@ -31,6 +31,5 @@ function processSuccess(result, handler, parameters) {
 }
 
 function processError() {
-    // TODO Add Error processor!!!
-    //window.location.href = getOriginUrl() + "/Error";
+    window.location.href = getOriginUrl() + "/Error/Critical";
 }

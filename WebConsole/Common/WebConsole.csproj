@@ -114,7 +114,7 @@
     <Content Include="Scripts\area\area-creator.js" />
     <Content Include="Scripts\area\area-header-creator.js" />
     <Content Include="Scripts\area\area-tab-creator.js" />
-    <Content Include="Scripts\global\global-ajax.js" />
+    <Content Include="Scripts\global\global-request.js" />
     <Content Include="Scripts\global\global-events.js" />
     <Content Include="Scripts\global\extensions\string-extensions.js" />
     <Content Include="Scripts\global\global-screen.js" />
@@ -142,6 +142,7 @@
     <Content Include="Styles\area\area-footer.css" />
     <Content Include="Styles\area\area-header.css" />
     <Content Include="Styles\area\area.css" />
+    <Content Include="Styles\global\error.css" />
     <Content Include="Styles\global\footer.css" />
     <Content Include="Styles\global\global.css" />
     <Content Include="Styles\global\header.css" />
@@ -158,6 +159,7 @@
     <Compile Include="Config\ViewEnginesConfig.cs" />
     <Compile Include="Config\WcViewEngine.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -273,6 +275,8 @@
     <Content Include="Styles\dependencies\bootstrap-4.1.3\_navbar.scss" />
     <Content Include="Styles\dependencies\bootstrap-4.1.3\_select.scss" />
     <Content Include="Styles\core\scss\_navbar.scss" />
+    <Content Include="Views\Error\Critical.cshtml" />
+    <Content Include="Views\Error\PageNotFound.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

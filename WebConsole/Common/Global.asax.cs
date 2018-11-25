@@ -37,18 +37,25 @@ namespace WebConsole
 
         protected void Application_Error(object sender, EventArgs e)
         {
-            // TODO Add errors handler!!!
-            var server = Context.Server;
-            var error = server.GetLastError();
-            var code = (error as HttpException)?.GetHttpCode() ?? 500;
-            if (code != 404)
-            {
-
-            }
-            server.ClearError();
+            var error = Server.GetLastError();
+            var isCriticalError = (error as HttpException)?.GetHttpCode() != 404;
+            if (isCriticalError)
+                Session["error"] = error;
+            Server.ClearError();
 
             var response = Context.Response;
             response.Clear();
+
+            if (Context.CurrentHandler is MvcHandler handler
+             && handler.RequestContext.HttpContext.Request.IsAjaxRequest())
+                response.StatusCode = 400;
+            else
+            {
+                var action = isCriticalError
+                    ? "Critical"
+                    : "PageNotFound";
+                response.Redirect($"/Error/{action}");
+            }
         }
     }
 }
