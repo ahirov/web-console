@@ -6,22 +6,6 @@ function getAllJobsRequest(handler) {
     processReadRequest("/Job/Global/GetAll", handler);
 }
 
-function startJobRequest(data, handler) {
-    processRequest("/Job/State/Start", data, handler);
-}
-
-function stopJobRequest(data, handler) {
-    processRequest("/Job/State/Stop", data, handler);
-}
-
-function stopJobsRequest(handler) {
-    processReadRequest("/Job/State/StopAll", handler);
-}
-
-function readJobRequest(handler) {
-    processReadRequest("/Job/Stream/Read", handler);
-}
-
-function writeJobRequest(data) {
-    processWriteRequest("/Job/Stream/Write", data);
+function stopAllJobsRequest(handler) {
+    processReadRequest("/Job/Global/StopAll", handler);
 }

@@ -8,17 +8,21 @@ using System.Web.Mvc;
 using AttachedConsole;
 using Newtonsoft.Json;
 using WebConsole.Controllers;
+using WebConsole.Core.Job;
 using WebConsole.Core.Job.Info;
 
 namespace WebConsole.Areas.Job.Controllers
 {
     public class GlobalController : BaseController
     {
-        private readonly IJobInfoSetProvider jobInfoSetProvider;
-
-        public GlobalController(IJobInfoSetProvider jobInfoSetProvider)
+        private readonly IJobInfoSetProvider provider;
+        private readonly IJobFinalizer finalizer;
+        
+        public GlobalController(IJobInfoSetProvider provider,
+                                IJobFinalizer finalizer)
         {
-            this.jobInfoSetProvider = jobInfoSetProvider;
+            this.provider = provider;
+            this.finalizer = finalizer;
         }
 
         //
@@ -30,8 +34,17 @@ namespace WebConsole.Areas.Job.Controllers
             // or
             // use jobs.xml configuration file!!!
             var jobs = new List<Type> {typeof(Program)};
-            var set = jobInfoSetProvider.GetAll(jobs);
-            return ReturnData(JsonConvert.SerializeObject(set));
+            var infos = provider.GetAll(jobs);
+            return ReturnData(JsonConvert.SerializeObject(infos));
+        }
+
+        //
+        // POST: /Job/Global/StopAll
+        [HttpPost]
+        public ActionResult StopAll()
+        {
+            finalizer.FinalAll();
+            return Success();
         }
     }
 }

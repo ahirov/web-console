@@ -4,12 +4,11 @@
 
 using System.Xml.Linq;
 using WebConsole.Core.Entities;
-using WebConsole.Core.Exceptions;
 using WebConsole.Core.Extensions;
-using WebConsole.Core.Job.Info;
+using WebConsole.Core.Job.Exceptions;
 using static WebConsole.Core.ApplicationConstants;
 
-namespace WebConsole.Core.Job.IO
+namespace WebConsole.Core.Job.Config
 {
     public interface IJobConfigReader
     {
@@ -18,13 +17,6 @@ namespace WebConsole.Core.Job.IO
 
     public class JobConfigReader : IJobConfigReader
     {
-        private readonly IJobIdProvider idProvider;
-
-        public JobConfigReader(IJobIdProvider idProvider)
-        {
-            this.idProvider = idProvider;
-        }
-
         public JobInfo Read(XElement element)
         {
             var name = element.Value;
@@ -32,10 +24,9 @@ namespace WebConsole.Core.Job.IO
             var ns = element.Attribute(NamespaceName)?.Value;
 
             return !name.HasValue() || !location.HasValue()
-                ? throw new JobConfigMissingDataException()
+                ? throw new JobConfigFileException()
                 : new JobInfo
                 {
-                    Id = idProvider.GetId(),
                     Name = name.Trim(),
                     FullName = $"{ns.Trim()}.{name.Trim()}",
                     Location = location.Trim()

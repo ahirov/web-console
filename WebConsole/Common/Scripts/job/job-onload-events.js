@@ -5,15 +5,14 @@ Copyright (c) 2018 Anton Hirov */
 $(document).ready(function () {
     getAllJobsRequest(function (data) {
         var list = $(wcJobsListId);
-        var jobs = JSON.parse(data);
+        var infos = JSON.parse(data);
 
-        for (var index in jobs) {
-            var job = new JobContent(jobs[index]);
-            job.status = "initializing...";
+        for (var index in infos) {
+            var info = infos[index];
             $.CreateOption()
-             .data("job", job)
-             .attr("title", job.name)
-             .append(job.fullName)
+             .data("jobInfo", info)
+             .attr("title", info.name)
+             .append(info.fullName)
              .appendTo(list);
         }
         list.selectpicker("refresh");

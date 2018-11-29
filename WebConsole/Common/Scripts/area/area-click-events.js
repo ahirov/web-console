@@ -3,13 +3,8 @@ See LICENSE file in the solution root for full license information
 Copyright (c) 2018 Anton Hirov */
 
 function areaMinimizeButtonEvent() {
-    stopReadJob();
     var id = $(wcAreaClass).data("id");
-
     var job = loadJob(id);
-    job.content = $(wcAreaContentOutputClass).html();
-    job.status = $(wcAreaStatusClass).text();
-    saveJob(job);
 
     createAreaTab(job);
     createDefaultArea();
@@ -23,14 +18,7 @@ function areaMaximizeButtonEvent() {
 }
 
 function areaCloseButtonEvent() {
-    $(wcAreaStatusClass).text("stopping...");
     stopReadJob();
-
-    var jobId = $(wcAreaClass).data("id");
-    stopJobRequest({ id: jobId }, function () {
-        removeJob(jobId);
-        createDefaultArea();
-    });
     return false;
 }
 
@@ -41,6 +29,5 @@ function areaRestoreButtonEvent() {
 
     var job = loadJob(id);
     createArea(job);
-    startReadJob();
     return false;
 }

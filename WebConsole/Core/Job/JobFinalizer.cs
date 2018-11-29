@@ -6,7 +6,6 @@ namespace WebConsole.Core.Job
 {
     public interface IJobFinalizer
     {
-        bool Final(string id);
         void FinalAll();
     }
 
@@ -19,24 +18,10 @@ namespace WebConsole.Core.Job
             this.buffer = buffer;
         }
 
-        public bool Final(string id)
-        {
-            var processes = buffer.LoadAll();
-            var containsId = processes.ContainsKey(id);
-            if (containsId)
-            {
-                buffer.Load(id).Dispose();
-                processes.Remove(id);
-            }
-            return containsId;
-        }
-
         public void FinalAll()
         {
-            var processes = buffer.LoadAll();
-            foreach (var process in processes)
-                process.Value.Dispose();
-            processes.Clear();
+            buffer.RunAll(job => job.Dispose());
+            buffer.Clear();
         }
     }
 }

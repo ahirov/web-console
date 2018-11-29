@@ -8,11 +8,11 @@ using System.IO;
 using System.Linq;
 using System.Xml.Linq;
 using WebConsole.Core.Entities;
-using WebConsole.Core.Exceptions;
 using WebConsole.Core.Extensions;
+using WebConsole.Core.Job.Exceptions;
 using static WebConsole.Core.ApplicationConstants;
 
-namespace WebConsole.Core.Job.IO
+namespace WebConsole.Core.Job.Config
 {
     public interface IJobSetConfigReader
     {
@@ -36,7 +36,7 @@ namespace WebConsole.Core.Job.IO
 
             var root = XDocument.Parse(file).Root;
             return !root.HasValue()
-                ? throw new JobConfigMissingDataException()
+                ? throw new JobConfigFileException()
                 : root.Element(JobsName)
                       .Elements()
                       .Select(configReader.Read)

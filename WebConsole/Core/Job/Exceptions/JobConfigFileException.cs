@@ -4,10 +4,10 @@
 
 using System;
 
-namespace WebConsole.Core.Exceptions
+namespace WebConsole.Core.Job.Exceptions
 {
-    public class JobConfigMissingDataException : Exception
+    public class JobConfigFileException : Exception
     {
-        public override string Message => "The jobs.xml file is not completed!!!";
+        public override string Message => "The jobs.xml file contains errors!!!";
     }
 }

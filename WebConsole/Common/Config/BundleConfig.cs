@@ -10,17 +10,21 @@ namespace WebConsole.Config
     {
         public static void Register(BundleCollection bundles)
         {
-            var js = new ScriptBundle("~/bundles/js");
+            var jsDependencies = new ScriptBundle("~/bundles/js/dependencies");
+            bundles.Add(jsDependencies);
+            Include("~/Scripts/dependencies/", jsDependencies);
+            
+            var js = new ScriptBundle("~/bundles/js/custom");
             bundles.Add(js);
             Include("~/Scripts/global/", js);
-            Include("~/Scripts/area/", js);
-            Include("~/Scripts/job/", js);
+            Include("~/Scripts/area/",   js);
+            Include("~/Scripts/job/",    js);
 
             var css = new StyleBundle("~/bundles/css");
             bundles.Add(css);
-            Include("~/Styles/core/", css, false);
+            Include("~/Styles/core/",   css, false);
             Include("~/Styles/global/", css);
-            Include("~/Styles/area/", css);
+            Include("~/Styles/area/",   css);
         }
 
         private static void Include(string path,

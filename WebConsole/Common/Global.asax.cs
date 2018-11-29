@@ -15,8 +15,6 @@ namespace WebConsole
 {
     public class MvcApplication : HttpApplication
     {
-        private IJobFinalizer finalizer;
-
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
@@ -24,15 +22,11 @@ namespace WebConsole
 
             RouteConfig.Register(RouteTable.Routes);
             BundleConfig.Register(BundleTable.Bundles);
-
-            var container = ComponentsConfig.Register();
-            container.Resolve<IJobBufferHandler>().Init();
-            finalizer = container.Resolve<IJobFinalizer>();
         }
 
         protected void Application_End()
         {
-            finalizer.FinalAll();
+            StartupConfig.Container.Resolve<IJobFinalizer>().FinalAll();
         }
 
         protected void Application_Error(object sender, EventArgs e)

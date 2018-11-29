@@ -13,8 +13,12 @@ function createArea(job) {
     createAreaHeader(job.fullName, area);
 
     var output = $.CreateDiv()
-                 .addClass(wcAreaContentOutputClass.GetName())
-                 .html(job.content);
+                  .addClass(wcAreaContentOutputClass.GetName());
+    job.lines.forEach(function(value) {
+        $.CreateParagraph()
+         .append(value)
+         .appendTo(output);
+    });
     var input = $.CreateInput()
                  .addClass(wcAreaContentInputClass.GetName())
                  .keydown(areaContentKeyPressEvent);

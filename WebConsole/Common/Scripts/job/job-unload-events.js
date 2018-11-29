@@ -4,7 +4,7 @@ Copyright (c) 2018 Anton Hirov */
 
 $(document).ready(function() {
     addEventListener("beforeunload", function () {
-        stopJobsRequest(function() {
+        stopAllJobsRequest(function() {
             clearStorage();
         });
     });

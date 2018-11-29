@@ -2,48 +2,61 @@
 // See LICENSE file in the solution root for full license information
 // Copyright (c) 2018 Anton Hirov
 
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using WebConsole.Core.Job.Exceptions;
 using static WebConsole.Core.ApplicationConstants;
 
 namespace WebConsole.Core.Job
 {
     public interface IJobBufferHandler
     {
-        void Init();
-        void Save(string id, Process job);
-        Process Load(string id);
-        Dictionary<string, Process> LoadAll();
+        void Add(Process job);
+        void Run(int id, Action<Process, Dictionary<int, Process>> action);
+        void RunAll(Action<Process> action);
+        void Clear();
     }
 
     public class JobBufferHandler : IJobBufferHandler
     {
-        private readonly IApplicationStorage<Dictionary<string, Process>> buffer;
+        private readonly IApplicationStorage<Dictionary<int, Process>> buffer;
 
-        public JobBufferHandler(IApplicationStorage<Dictionary<string, Process>> buffer)
+        public JobBufferHandler(IApplicationStorage<Dictionary<int, Process>> buffer)
         {
             this.buffer = buffer;
         }
 
-        public void Init()
+        public void Add(Process job)
         {
-            buffer[JobSetKey] = new Dictionary<string, Process>();
+            buffer.Invoke(JobSetKey, set => set[job.Id] = job);
         }
 
-        public void Save(string id, Process job)
+        public void Run(int id, Action<Process, Dictionary<int, Process>> action)
         {
-            buffer.Action(JobSetKey, set => set[id] = job);
+            buffer.Invoke(JobSetKey, all =>
+            {
+                if (all.ContainsKey(id))
+                    action.Invoke(all[id], all);
+                else
+                    throw new JobNotFoundException(id);
+            });
         }
 
-        public Process Load(string id)
+        public void RunAll(Action<Process> action)
         {
-            // TODO Add job checking!!!
-            return buffer[JobSetKey][id];
+            buffer.Invoke(JobSetKey, all =>
+            {
+                foreach (var item in all)
+                {
+                    action.Invoke(item.Value);
+                }
+            });
         }
 
-        public Dictionary<string, Process> LoadAll()
+        public void Clear()
         {
-            return buffer[JobSetKey];
+            buffer.Invoke(JobSetKey, all => all.Clear());
         }
     }
 }

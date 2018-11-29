@@ -7,44 +7,21 @@ using System.Web;
 
 namespace WebConsole.Core
 {
-    public interface IApplicationStorage<T> where T : class
+    public interface IApplicationStorage<out T> where T : class, new()
     {
-        T this[string key] { get; set; }
-        void Action(string key, Action<T> action);
+        void Invoke(string key, Action<T> action);
     }
 
-    public class ApplicationStorage<T> : IApplicationStorage<T> where T : class
+    public class ApplicationStorage<T> : IApplicationStorage<T> where T : class, new()
     {
         private readonly HttpApplicationState state = HttpContext.Current.Application;
 
-        public T this[string key]
-        {
-            get => Get(key);
-            set => Set(key, value);
-        }
-
-        public void Action(string key, Action<T> action)
+        public void Invoke(string key, Action<T> action)
         {
             state.Lock();
 
-            action.Invoke((T) state[key]);
-            state.UnLock();
-        }
-
-        private T Get(string key)
-        {
-            state.Lock();
-
-            var value = (T)state[key];
-            state.UnLock();
-            return value;
-        }
-
-        private void Set(string key, T value)
-        {
-            state.Lock();
-
-            state[key] = value;
+            action.Invoke((T) state[key]
+                      ?? (T) (state[key] = new T()));
             state.UnLock();
         }
     }

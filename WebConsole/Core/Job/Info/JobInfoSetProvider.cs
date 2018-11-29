@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using WebConsole.Core.Entities;
-using WebConsole.Core.Job.IO;
+using WebConsole.Core.Job.Config;
 
 namespace WebConsole.Core.Job.Info
 {
@@ -17,21 +17,23 @@ namespace WebConsole.Core.Job.Info
 
     public class JobInfoSetProvider : IJobInfoSetProvider
     {
-        private readonly IJobSetConfigReader setConfigReader;
+        private readonly IJobSetConfigReader configReader;
         private readonly IJobInfoProvider infoProvider;
 
-        public JobInfoSetProvider(IJobSetConfigReader setConfigReader,
+        public JobInfoSetProvider(IJobSetConfigReader configReader,
                                   IJobInfoProvider infoProvider)
         {
-            this.setConfigReader = setConfigReader;
+            this.configReader = configReader;
             this.infoProvider = infoProvider;
         }
 
         public List<JobInfo> GetAll(List<Type> customJobs)
         {
-            var jobs = setConfigReader.Read();
-            jobs.AddRange(customJobs.Select(infoProvider.Get));
-            return jobs.OrderBy(info => info.FullName).ToList();
+            var infos = configReader.Read();
+            var customInfos = customJobs.Select(infoProvider.Get);
+
+            infos.AddRange(customInfos);
+            return infos.OrderBy(info => info.FullName).ToList();
         }
     }
 }

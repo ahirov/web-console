@@ -2,22 +2,41 @@
 See LICENSE file in the solution root for full license information
 Copyright (c) 2018 Anton Hirov */
 
-window.isReadJob = false;
-
-function startReadJob() {
-    window.isReadJob = true;
-    var handler = function (output) {
-        // TODO Error!!!
-        if (window.isReadJob) {
+function startReadJob(job, args, callback) {
+    var stream = $.connection.streamHub;
+    stream.client.read = function (id, value) {
+        var job = loadJob(id);
+        if (job.isActive) {
+            job.status = "working...";
+            $(wcAreaStatusClass).text(job.status);
             $.CreateParagraph()
-             .append(output)
+             .append(value)
              .appendTo($(wcAreaContentOutputClass));
-            readJobRequest(handler);
         }
+        job.lines.push(value);
+        saveJob(job);
     };
-    readJobRequest(handler);
+
+    $.connection.hub.start().done(function () {
+        stream.server.startJob(job.location,
+                               args).done(function (id) {
+            job.id = id;
+            job.lines = [];
+            job.status = "initializing...";
+            job.isActive = true;
+
+            saveJob(job);
+            callback();
+        });
+    });
 }
 
 function stopReadJob() {
-    window.isReadJob = false;
+    var id = $(wcAreaClass).data("id");
+    var stream = $.connection.streamHub;
+    stream.server.stopJob(id).done(function () {
+        removeJob(id);
+        $.connection.hub.stop();
+        createDefaultArea();
+    });
 }

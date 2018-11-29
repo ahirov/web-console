@@ -40,6 +40,8 @@
 *.min.css
 *.min.js
 
+!signalR-2.4.0.min.js
+
 obj
 bin
 .vs/*

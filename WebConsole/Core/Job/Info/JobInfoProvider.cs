@@ -14,18 +14,10 @@ namespace WebConsole.Core.Job.Info
 
     public class JobInfoProvider : IJobInfoProvider
     {
-        private readonly IJobIdProvider idProvider;
-
-        public JobInfoProvider(IJobIdProvider idProvider)
-        {
-            this.idProvider = idProvider;
-        }
-
         public JobInfo Get(Type type)
         {
             return new JobInfo
             {
-                Id = idProvider.GetId(),
                 Name = type.Name,
                 FullName = type.FullName,
                 Location = type.Assembly.Location
