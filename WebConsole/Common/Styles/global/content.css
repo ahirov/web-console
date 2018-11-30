@@ -1,0 +1,36 @@
+﻿/* WebConsole (https://github.com/hirov-anton/web-console)
+See LICENSE file in the solution root for full license information
+Copyright (c) 2018 Anton Hirov */
+
+.wc-default-sign {
+    /* text */
+    text-align: right;
+    font-size: 1.5rem;
+}
+
+#wc-windows-container {
+    /* text */
+    font-family: monospace;
+
+    /* display */
+    margin-top: 8rem;
+}
+
+#wc-tabs-container {
+    /* display */
+    margin: 0.5rem 0;
+}
+
+#wc-tabs-container > div {
+    /* border */
+    -ms-border-radius: 4px;
+
+    /* color */
+    background-color: #343a40;
+    border: 1px solid black;
+    border-radius: 4px;
+    color: #fff;
+
+    /* display */
+    padding: 0 5px;
+}

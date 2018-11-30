@@ -8,10 +8,10 @@ function startReadJob(job, args, callback) {
         var job = loadJob(id);
         if (job.isActive) {
             job.status = "working...";
-            $(wcAreaStatusClass).text(job.status);
+            $(wcWindowStatusClass).text(job.status);
             $.CreateParagraph()
              .append(value)
-             .appendTo($(wcAreaContentOutputClass));
+             .appendTo($(wcWindowContentOutputClass));
         }
         job.lines.push(value);
         saveJob(job);
@@ -32,11 +32,11 @@ function startReadJob(job, args, callback) {
 }
 
 function stopReadJob() {
-    var id = $(wcAreaClass).data("id");
+    var id = $(wcWindowClass).data("id");
     var stream = $.connection.streamHub;
     stream.server.stopJob(id).done(function () {
         removeJob(id);
         $.connection.hub.stop();
-        createDefaultArea();
+        createDefaultSign();
     });
 }

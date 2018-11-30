@@ -3,7 +3,7 @@ See LICENSE file in the solution root for full license information
 Copyright (c) 2018 Anton Hirov */
 
 
-function createAreaTab(job) {
+function createWindowTab(job) {
     var tab = $.CreateDiv()
                .data("id", job.id)
                .addClass("d-flex")
@@ -19,8 +19,8 @@ function createAreaTab(job) {
     $.CreateLink()
      .append($.CreateIcon("far", "fa-window-restore"))
      .appendTo(tab)
-     .click(areaRestoreButtonEvent);
+     .click(windowRestoreButtonEvent);
 
-    $(wcTabContainerId).append(tab);
+    $(wcTabsContainerId).append(tab);
     tab.fadeIn();
 }

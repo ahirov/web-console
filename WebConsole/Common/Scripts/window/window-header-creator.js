@@ -2,11 +2,11 @@
 See LICENSE file in the solution root for full license information
 Copyright (c) 2018 Anton Hirov */
 
-function createAreaHeader(title, container) {
+function createWindowHeader(title, container) {
     var header = $.CreateDiv()
                   .addClass("d-flex")
                   .addClass("align-items-center")
-                  .addClass(wcAreaHeaderClass.GetName())
+                  .addClass(wcWindowHeaderClass.GetName())
                   .appendTo(container);
 
     $.CreateSpan()
@@ -17,13 +17,13 @@ function createAreaHeader(title, container) {
     $.CreateLink()
      .append($.CreateIcon("far", "fa-window-minimize"))
      .appendTo(header)
-     .click(areaMinimizeButtonEvent);
+     .click(windowMinimizeButtonEvent);
     $.CreateLink()
      .append($.CreateIcon("far", "fa-window-maximize"))
      .appendTo(header)
-     .click(areaMaximizeButtonEvent);
+     .click(windowMaximizeButtonEvent);
     $.CreateLink()
      .append($.CreateIcon("far", "fa-window-close"))
      .appendTo(header)
-     .click(areaCloseButtonEvent);
+     .click(windowCloseButtonEvent);
 }

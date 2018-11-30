@@ -2,32 +2,32 @@
 See LICENSE file in the solution root for full license information
 Copyright (c) 2018 Anton Hirov */
 
-function areaMinimizeButtonEvent() {
-    var id = $(wcAreaClass).data("id");
+function windowMinimizeButtonEvent() {
+    var id = $(wcWindowClass).data("id");
     var job = loadJob(id);
 
-    createAreaTab(job);
-    createDefaultArea();
+    createWindowTab(job);
+    createDefaultSign();
     return false;
 }
 
-function areaMaximizeButtonEvent() {
-    var element = $(wcAreaClass).get(0);
+function windowMaximizeButtonEvent() {
+    var element = $(wcWindowClass).get(0);
     toggleFullScreen(element);
     return false;
 }
 
-function areaCloseButtonEvent() {
+function windowCloseButtonEvent() {
     stopReadJob();
     return false;
 }
 
-function areaRestoreButtonEvent() {
+function windowRestoreButtonEvent() {
     var tab = $(this).parent();
     var id = tab.data("id");
     tab.remove();
 
     var job = loadJob(id);
-    createArea(job);
+    createWindow(job);
     return false;
 }

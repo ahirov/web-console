@@ -2,19 +2,17 @@
 See LICENSE file in the solution root for full license information
 Copyright (c) 2018 Anton Hirov */
 
-.wc-area-footer {
+.wc-window-header {
     /* display */
-    height: 1.2rem;
-    min-height: 2%;
-
-    /* font */
-    font-size: 0.8rem;
+    height: 1.5rem;
+    min-height: 3%;
 
     /* color */
     background-color: #6c757d;
 }
 
-.wc-area-footer > p {
+.wc-window-header > a,
+.wc-window-header > span {
     /* display */
     padding: 0 5px;
 }

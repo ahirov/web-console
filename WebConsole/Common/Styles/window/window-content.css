@@ -2,7 +2,7 @@
 See LICENSE file in the solution root for full license information
 Copyright (c) 2018 Anton Hirov */
 
-.wc-area-content {
+.wc-window-content {
     /* display */
     height: 28rem;
     min-height: 95%;
@@ -15,7 +15,7 @@ Copyright (c) 2018 Anton Hirov */
     background-color: #343a40;
 }
 
-.wc-area-content-input {
+.wc-window-content-input {
     /* display */
     outline: none;
     width: 100%;
@@ -28,8 +28,8 @@ Copyright (c) 2018 Anton Hirov */
     color: #fff;
 }
 
-.wc-area-content-input,
-.wc-area-content-output {
+.wc-window-content-input,
+.wc-window-content-output {
     /* display */
     padding: 0 5px;
 }
