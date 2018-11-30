@@ -22,7 +22,8 @@ namespace WebConsole.Core.Job
         {
             var job = new Process
             {
-                StartInfo = GetInfo(location, args)
+                StartInfo = GetInfo(location, args),
+                EnableRaisingEvents = true
             };
             job.OutputDataReceived += (sender, eventArgs) =>
             {
@@ -30,6 +31,7 @@ namespace WebConsole.Core.Job
                 if (output.HasValue())
                     caller.read(job.Id, output);
             };
+            job.Exited += (sender, eventArgs) => caller.stop();
             return job;
         }
 

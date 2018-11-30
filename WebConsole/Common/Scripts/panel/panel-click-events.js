@@ -9,7 +9,7 @@ $(document).ready(function () {
 
         var job = new JobContent(info);
         var args = $(wcJobArgsId).val();
-        startReadJob(job, args, function () {
+        startJob(job, args, function () {
             createWindow(job);
         });
         return false;

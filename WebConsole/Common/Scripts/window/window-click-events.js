@@ -18,7 +18,7 @@ function windowMaximizeButtonEvent() {
 }
 
 function windowCloseButtonEvent() {
-    stopReadJob();
+    stopJob();
     return false;
 }
 

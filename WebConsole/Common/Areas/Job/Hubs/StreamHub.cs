@@ -35,7 +35,8 @@ namespace WebConsole.Areas.Job.Hubs
         {
             buffer.Run(id, (job, all) =>
             {
-                job.Kill();
+                if(!job.HasExited)
+                    job.Kill();
                 job.Dispose();
                 all.Remove(id);
             });

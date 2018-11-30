@@ -2,7 +2,7 @@
 See LICENSE file in the solution root for full license information
 Copyright (c) 2018 Anton Hirov */
 
-function startReadJob(job, args, callback) {
+function startJob(job, args, callback) {
     var stream = $.connection.streamHub;
     stream.client.read = function (id, value) {
         var job = loadJob(id);
@@ -16,6 +16,7 @@ function startReadJob(job, args, callback) {
         job.lines.push(value);
         saveJob(job);
     };
+    stream.client.stop = function() {stopJob();};
 
     $.connection.hub.start().done(function () {
         stream.server.startJob(job.location,
@@ -31,7 +32,7 @@ function startReadJob(job, args, callback) {
     });
 }
 
-function stopReadJob() {
+function stopJob() {
     var id = $(wcWindowClass).data("id");
     var stream = $.connection.streamHub;
     stream.server.stopJob(id).done(function () {
