@@ -31,6 +31,14 @@ Copyright (c) 2018 Anton Hirov */
     #wc-header-content > ul > li > div.bootstrap-select,
     #wc-header-content > ul > li > input {
         /* display */
+        width: 160px;
+    }
+}
+
+@media (min-width: 992px) {
+    #wc-header-content > ul > li > div.bootstrap-select,
+    #wc-header-content > ul > li > input {
+        /* display */
         width: 220px;
     }
 }
