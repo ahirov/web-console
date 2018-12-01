@@ -20,9 +20,3 @@ function processWindow(job) {
         createWindow(job, lastContainer);
     }
 }
-
-function getWindowContainer(id) {
-    return $(wcWindowContainerClass).filter(function () {
-        return $(this).data("id") === id;
-    }).first();
-}

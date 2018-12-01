@@ -143,9 +143,12 @@
     <Content Include="Scripts\panel\entities\ViewMode.js" />
     <Content Include="Scripts\window\events\window-click-events.js" />
     <Content Include="Scripts\window\events\window-onload-events.js" />
+    <Content Include="Scripts\window\handlers\parts\window-footer-creator.js" />
     <Content Include="Scripts\window\handlers\window-container-creator.js" />
+    <Content Include="Scripts\window\handlers\parts\window-content-creator.js" />
+    <Content Include="Scripts\window\handlers\window-container-processor.js" />
     <Content Include="Scripts\window\handlers\window-creator.js" />
-    <Content Include="Scripts\window\handlers\window-header-creator.js" />
+    <Content Include="Scripts\window\handlers\parts\window-header-creator.js" />
     <Content Include="Scripts\window\events\window-key-press-events.js" />
     <Content Include="Scripts\window\handlers\window-processor.js" />
     <Content Include="Scripts\window\handlers\window-tab-creator.js" />
