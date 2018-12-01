@@ -2,15 +2,15 @@
 See LICENSE file in the solution root for full license information
 Copyright (c) 2018 Anton Hirov */
 
-function createWindow(job) {
-    var container = $(wcWindowsContainerId).empty();
+function createWindow(job, rawContainer) {
+    var id = job.id;
+    var container = rawContainer.empty()
+                                .data("id", id);
     var window = $.CreateDiv()
                   .addClass(wcWindowClass.GetName())
-                  .data("id", job.id)
                   .hide()
                   .appendTo(container);
-
-    createWindowHeader(job.fullName, window);
+    createWindowHeader(id, job.fullName, window);
 
     var output = $.CreateDiv()
                   .addClass(wcWindowContentOutputClass.GetName());
@@ -21,7 +21,8 @@ function createWindow(job) {
     });
     var input = $.CreateInput()
                  .addClass(wcWindowContentInputClass.GetName())
-                 .keydown(windowContentKeyPressEvent);
+                 .keydown(windowContentKeyPressEvent)
+                 .data("id", id);
     $.CreateDiv()
      .addClass(wcWindowContentClass.GetName())
      .append(output)
@@ -40,11 +41,19 @@ function createWindow(job) {
     window.fadeIn();
 }
 
-function createDefaultSign() {
-    var defaultContainer = $.CreateDiv()
-                            .addClass(wcDefaultSignClass.GetName())
-                            .append("No active jobs...")
-                            .hide();
-    $(wcWindowsContainerId).empty().html(defaultContainer);
-    defaultContainer.fadeIn();
+function createDefaultSign(id) {
+    var defaultSign = $.CreateDiv()
+                       .addClass("d-flex")
+                       .addClass("align-items-center")
+                       .addClass("justify-content-end")
+                       .addClass(wcDefaultSignClass.GetName())
+                       .append("No active jobs...")
+                       .hide();
+    var container = id
+        ? getWindowContainer(id)
+        : $(wcWindowContainerClass);
+    container.empty()
+             .data("id", null)
+             .append(defaultSign.clone());
+    container.children().fadeIn();
 }

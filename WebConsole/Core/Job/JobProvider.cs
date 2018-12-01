@@ -31,7 +31,7 @@ namespace WebConsole.Core.Job
                 if (output.HasValue())
                     caller.read(job.Id, output);
             };
-            job.Exited += (sender, eventArgs) => caller.stop();
+            job.Exited += (sender, eventArgs) => caller.stop(job.Id);
             return job;
         }
 

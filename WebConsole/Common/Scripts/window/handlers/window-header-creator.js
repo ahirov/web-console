@@ -2,7 +2,7 @@
 See LICENSE file in the solution root for full license information
 Copyright (c) 2018 Anton Hirov */
 
-function createWindowHeader(title, container) {
+function createWindowHeader(id, title, container) {
     var header = $.CreateDiv()
                   .addClass("d-flex")
                   .addClass("align-items-center")
@@ -15,6 +15,8 @@ function createWindowHeader(title, container) {
      .appendTo(header);
 
     $.CreateLink()
+     .data("id", id)
+     .addClass(wcWindowMinimizeButtonClass.GetName())
      .append($.CreateIcon("far", "fa-window-minimize"))
      .appendTo(header)
      .click(windowMinimizeButtonEvent);
@@ -23,6 +25,7 @@ function createWindowHeader(title, container) {
      .appendTo(header)
      .click(windowMaximizeButtonEvent);
     $.CreateLink()
+     .data("id", id)
      .append($.CreateIcon("far", "fa-window-close"))
      .appendTo(header)
      .click(windowCloseButtonEvent);

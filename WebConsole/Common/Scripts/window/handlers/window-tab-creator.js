@@ -4,14 +4,16 @@ Copyright (c) 2018 Anton Hirov */
 
 
 function createWindowTab(job) {
+    var cell = $.CreateDiv()
+                .addClass("col-md-4")
+                .addClass("col-lg-3")
+                .addClass("col-xl-2")
+                .hide();
+
     var tab = $.CreateDiv()
                .data("id", job.id)
                .addClass("d-flex")
-               .addClass("col-md-4")
-               .addClass("col-lg-3")
-               .addClass("col-xl-2")
-               .hide();
-
+               .appendTo(cell);
     $.CreateSpan()
      .addClass("mr-auto")
      .append(job.name)
@@ -21,6 +23,6 @@ function createWindowTab(job) {
      .appendTo(tab)
      .click(windowRestoreButtonEvent);
 
-    $(wcTabsContainerId).append(tab);
-    tab.fadeIn();
+    $(wcTabsContainerId).append(cell);
+    cell.fadeIn();
 }

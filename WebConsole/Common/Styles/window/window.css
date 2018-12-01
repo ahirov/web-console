@@ -2,6 +2,12 @@
 See LICENSE file in the solution root for full license information
 Copyright (c) 2018 Anton Hirov */
 
+.wc-window-container {
+    /* display */
+    min-height: 23rem;
+    margin: 15px 0;
+}
+
 .wc-window {
     /* border */
     border: 1px black solid;

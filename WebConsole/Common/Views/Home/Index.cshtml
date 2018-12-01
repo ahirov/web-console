@@ -5,14 +5,12 @@ Copyright (c) 2018 Anton Hirov *@
 @{
     ViewBag.Title = "WebConsole";
 }
+<script>
+    window.defaultSignMessage = "";
+</script>
 
 <div>
-    <div id="wc-tabs-container" class="row"></div>
-    <div class="row">
-        <div class="col-12 offset-lg-2 col-lg-8">
-            <div id="wc-windows-container">
-                <div class="wc-default-sign">No active jobs...</div>
-            </div>
-        </div>
-    </div>
+    <div id="wc-tabs-container"
+         class="row"></div>
+    <div id="wc-windows-container"></div>
 </div>

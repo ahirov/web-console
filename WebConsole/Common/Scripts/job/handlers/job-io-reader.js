@@ -8,15 +8,17 @@ function startJob(job, args, callback) {
         var job = loadJob(id);
         if (job.isActive) {
             job.status = "working...";
-            $(wcWindowStatusClass).text(job.status);
+
+            var container = getWindowContainer(job.id);
+            container.find(wcWindowStatusClass).text(job.status);
             $.CreateParagraph()
              .append(value)
-             .appendTo($(wcWindowContentOutputClass));
+             .appendTo(container.find(wcWindowContentOutputClass));
         }
         job.lines.push(value);
         saveJob(job);
     };
-    stream.client.stop = function() {stopJob();};
+    stream.client.stop = function(id) {stopJob(id);};
 
     $.connection.hub.start().done(function () {
         stream.server.startJob(job.location,
@@ -32,12 +34,10 @@ function startJob(job, args, callback) {
     });
 }
 
-function stopJob() {
-    var id = $(wcWindowClass).data("id");
+function stopJob(id) {
     var stream = $.connection.streamHub;
     stream.server.stopJob(id).done(function () {
         removeJob(id);
-        $.connection.hub.stop();
-        createDefaultSign();
+        createDefaultSign(id);
     });
 }

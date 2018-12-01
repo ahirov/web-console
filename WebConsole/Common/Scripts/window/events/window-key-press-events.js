@@ -5,15 +5,15 @@ Copyright (c) 2018 Anton Hirov */
 function windowContentKeyPressEvent(event) {
     var keyCode = event.keyCode;
     if (keyCode === 13) {
-        var input = $(wcWindowContentInputClass).val();
+        var input = $(this);
+        var value = input.val();
+
         $.CreateParagraph()
-         .append(input)
-         .appendTo($(wcWindowContentOutputClass));
+         .append(value)
+         .appendTo(input.siblings(wcWindowContentOutputClass));
+        input.val("");
 
-        $(wcWindowContentInputClass).val("");
-
-        var id = $(wcWindowClass).data("id");
         var stream = $.connection.streamHub;
-        stream.server.write(id, input);
+        stream.server.write(input.data("id"), value);
     }
 }

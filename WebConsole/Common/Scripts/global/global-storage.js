@@ -25,6 +25,8 @@ function parseStorageContent(key, value) {
         var type = value.__type__;
         if (type === ContentType.STORAGE) {
             return new StorageContent(value);
+        } else if (type === ContentType.VIEW) {
+            return new ViewContent(value);
         } else if (type === ContentType.JOB) {
             return new JobContent(value);
         }

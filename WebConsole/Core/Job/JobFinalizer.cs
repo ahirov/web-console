@@ -20,7 +20,12 @@ namespace WebConsole.Core.Job
 
         public void FinalAll()
         {
-            buffer.RunAll(job => job.Dispose());
+            buffer.RunAll(job =>
+            {
+                if (!job.HasExited)
+                    job.Kill();
+                job.Dispose();
+            });
             buffer.Clear();
         }
     }
