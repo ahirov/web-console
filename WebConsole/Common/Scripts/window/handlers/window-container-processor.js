@@ -11,10 +11,10 @@ function getWindowContainer(id) {
 function createDefaultSign(id) {
     var defaultSign = $.CreateDiv()
                        .addClass("d-flex")
-                       .addClass("align-items-center")
+                       .addClass("align-items-end")
                        .addClass("justify-content-end")
                        .addClass(wcDefaultSignClass.GetName())
-                       .append("No active jobs...")
+                       .append("No active job...")
                        .hide();
     var container = id
         ? getWindowContainer(id)

@@ -4,10 +4,20 @@ Copyright (c) 2018 Anton Hirov */
 
 .wc-default-sign {
     /* display */
-    min-height: 23rem;
+    height: 22.8rem;
 
     /* text */
-    font-size: 1.5rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+
+    /* color */
+    color: #343a40;
+    background: repeating-linear-gradient(
+                135deg,
+                #f8f9fa,
+                #f8f9fa 1rem,
+                transparent 1rem,
+                transparent 2rem)
 }
 
 #wc-windows-container {
