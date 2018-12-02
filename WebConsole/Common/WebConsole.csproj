@@ -185,6 +185,7 @@
     <Content Include="Styles\global\footer.css" />
     <Content Include="Styles\global\global.css" />
     <Content Include="Styles\global\header.css" />
+    <Content Include="favicon.ico" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

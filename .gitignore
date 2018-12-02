@@ -41,6 +41,7 @@
 *.min.js
 
 !signalR-2.4.0.min.js
+!core.min.css
 
 obj
 bin
