@@ -10,12 +10,15 @@ namespace WebConsole.Core
         public const string JobSetKey = "JobSetKey";
 
         // CONFIG
-        public const string JobConfigFile = "job.xml";
+        public const string WcConfigFile = "WebConsole.config";
+        public const int DefaultJobsLimit = 12;
 
         // CODE
-        public const string JobsName      = "jobs";
-        public const string LocationName  = "location";
-        public const string NamespaceName = "namespace";
+        public const string JobsLiteral      = "jobs";
+        public const string LocationLiteral  = "location";
+        public const string NamespaceLiteral = "namespace";
+        public const string SettingsLiteral  = "settings";
+        public const string JobsLimitLiteral = "jobsLimit";
 
     }
 }

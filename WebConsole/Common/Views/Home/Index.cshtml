@@ -5,12 +5,9 @@ Copyright (c) 2018 Anton Hirov *@
 @{
     ViewBag.Title = "WebConsole";
 }
-<script>
-    window.defaultSignMessage = "";
-</script>
-
 <div>
     <div id="wc-tabs-container"
          class="row"></div>
     <div id="wc-windows-container"></div>
+    @Html.Partial("NoteModal")
 </div>

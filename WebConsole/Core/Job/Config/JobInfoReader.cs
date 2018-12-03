@@ -10,20 +10,22 @@ using static WebConsole.Core.ApplicationConstants;
 
 namespace WebConsole.Core.Job.Config
 {
-    public interface IJobConfigReader
+    public interface IJobInfoReader
     {
         JobInfo Read(XElement element);
     }
 
-    public class JobConfigReader : IJobConfigReader
+    public class JobInfoReader : IJobInfoReader
     {
         public JobInfo Read(XElement element)
         {
             var name = element.Value;
-            var location = element.Attribute(LocationName)?.Value;
-            var ns = element.Attribute(NamespaceName)?.Value;
+            var location = element.Attribute(LocationLiteral)?.Value;
+            var ns = element.Attribute(NamespaceLiteral)?.Value;
 
-            return !name.HasValue() || !location.HasValue()
+            return !name.HasValue()
+                || !location.HasValue()
+                || !ns.HasValue()
                 ? throw new JobConfigFileException()
                 : new JobInfo
                 {

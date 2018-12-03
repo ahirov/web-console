@@ -2,9 +2,11 @@
 // See LICENSE file in the solution root for full license information
 // Copyright (c) 2018 Anton Hirov
 
+using System.Configuration;
 using System.Diagnostics;
 using Microsoft.AspNet.SignalR;
 using WebConsole.Core.Job;
+using static WebConsole.Core.ApplicationConstants;
 
 namespace WebConsole.Areas.Job.Hubs
 {
@@ -22,14 +24,21 @@ namespace WebConsole.Areas.Job.Hubs
 
         public int StartJob(string location, string args)
         {
-            Process job = provider.GetJob(location, args,
-                                          Clients.Caller);
-            job.Start();
-            job.BeginOutputReadLine();
-            job.BeginErrorReadLine();
-
-            buffer.Add(job);
-            return job.Id;
+            var id = 0;
+            buffer.Run(all =>
+            {
+                if (all.Count < GetLimit())
+                {
+                    Process job = provider.GetJob(location, args,
+                                                  Clients.Caller);
+                    job.Start();
+                    job.BeginOutputReadLine();
+                    job.BeginErrorReadLine();
+                    id = job.Id;
+                    all[id] = job;
+                }
+            });
+            return id;
         }
 
         public void StopJob(int id)
@@ -47,6 +56,13 @@ namespace WebConsole.Areas.Job.Hubs
         {
             buffer.Run(id, (job, all) =>
                           { job.StandardInput.WriteLine(input); });
+        }
+
+        private static int GetLimit()
+        {
+            var setting = ConfigurationManager.AppSettings[JobsLimitLiteral];
+            var isSuccessful = int.TryParse(setting, out var limit);
+            return isSuccessful ? limit : DefaultJobsLimit;
         }
     }
 }

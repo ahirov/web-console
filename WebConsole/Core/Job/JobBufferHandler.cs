@@ -12,8 +12,8 @@ namespace WebConsole.Core.Job
 {
     public interface IJobBufferHandler
     {
-        void Add(Process job);
         void Run(int id, Action<Process, Dictionary<int, Process>> action);
+        void Run(Action<Dictionary<int, Process>> action);
         void RunAll(Action<Process> action);
         void Clear();
     }
@@ -27,11 +27,6 @@ namespace WebConsole.Core.Job
             this.buffer = buffer;
         }
 
-        public void Add(Process job)
-        {
-            buffer.Invoke(JobSetKey, set => set[job.Id] = job);
-        }
-
         public void Run(int id, Action<Process, Dictionary<int, Process>> action)
         {
             buffer.Invoke(JobSetKey, all =>
@@ -41,6 +36,11 @@ namespace WebConsole.Core.Job
                 else
                     throw new JobNotFoundException(id);
             });
+        }
+
+        public void Run(Action<Dictionary<int, Process>> action)
+        {
+            buffer.Invoke(JobSetKey, action.Invoke);
         }
 
         public void RunAll(Action<Process> action)

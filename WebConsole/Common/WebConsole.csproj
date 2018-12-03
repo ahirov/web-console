@@ -137,7 +137,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
-    <Content Include="job.xml" />
     <Content Include="Scripts\job\entities\JobStatus.js" />
     <Content Include="Scripts\job\handlers\job-read-processor.js" />
     <Content Include="Scripts\job\handlers\job-error-processor.js" />
@@ -319,12 +318,15 @@
     <Content Include="Views\Error\Critical.cshtml" />
     <Content Include="Views\Error\PageNotFound.cshtml" />
     <Content Include="Styles\dependencies\bootstrap-4.1.3\_popover.scss" />
+    <Content Include="Styles\global\modal.css" />
+    <Content Include="Views\Workspace\Partial\NoteModal.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+    <Content Include="WebConsole.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Job\Views\Shared\" />
@@ -374,6 +376,9 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>
+  <PropertyGroup>
+    <PreBuildEvent>copy $(SolutionDir)\WebConsole.config $(ProjectDir)\WebConsole.config</PreBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

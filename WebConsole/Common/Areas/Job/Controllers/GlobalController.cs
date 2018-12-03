@@ -4,26 +4,28 @@
 
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Web.Mvc;
 using Newtonsoft.Json;
 using WebConsole.Controllers;
 using WebConsole.Core.Job;
-using WebConsole.Core.Job.Info;
+using WebConsole.Core.Job.Config;
 using Console = AttachedConsole;
 using ConsoleWithError = AttachedConsoleWithError;
+using static WebConsole.Core.ApplicationConstants;
 
 namespace WebConsole.Areas.Job.Controllers
 {
     public class GlobalController : BaseController
     {
-        private readonly IJobInfoSetProvider provider;
-        private readonly IJobFinalizer finalizer;
+        private readonly IConfigInfoProcessor configProcessor;
+        private readonly IJobFinalizer jobFinalizer;
 
-        public GlobalController(IJobInfoSetProvider provider,
-                                IJobFinalizer finalizer)
+        public GlobalController(IConfigInfoProcessor configProcessor,
+                                IJobFinalizer jobFinalizer)
         {
-            this.provider = provider;
-            this.finalizer = finalizer;
+            this.configProcessor = configProcessor;
+            this.jobFinalizer = jobFinalizer;
         }
 
         //
@@ -31,16 +33,14 @@ namespace WebConsole.Areas.Job.Controllers
         [HttpPost]
         public ActionResult GetAll()
         {
-            // Attach your console application here
-            // or
-            // use jobs.xml configuration file!!!
             var jobs = new List<Type>
             {
                 typeof(Console.Program),
                 typeof(ConsoleWithError.Program)
             };
-            var infos = provider.GetAll(jobs);
-            return ReturnData(JsonConvert.SerializeObject(infos));
+            var config = configProcessor.Process(jobs);
+            ConfigurationManager.AppSettings[JobsLimitLiteral] = config.JobsLimit;
+            return ReturnData(JsonConvert.SerializeObject(config.Jobs));
         }
 
         //
@@ -48,7 +48,7 @@ namespace WebConsole.Areas.Job.Controllers
         [HttpPost]
         public ActionResult StopAll()
         {
-            finalizer.FinalAll();
+            jobFinalizer.FinalAll();
             return Success();
         }
     }

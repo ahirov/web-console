@@ -5,16 +5,16 @@
 using System;
 using WebConsole.Core.Entities;
 
-namespace WebConsole.Core.Job.Info
+namespace WebConsole.Core.Job.Config
 {
-    public interface IJobInfoProvider
+    public interface IJobInfoProcessor
     {
-        JobInfo Get(Type type);
+        JobInfo Process(Type type);
     }
 
-    public class JobInfoProvider : IJobInfoProvider
+    public class JobInfoProcessor : IJobInfoProcessor
     {
-        public JobInfo Get(Type type)
+        public JobInfo Process(Type type)
         {
             return new JobInfo
             {

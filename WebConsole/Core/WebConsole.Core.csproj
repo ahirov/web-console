@@ -49,16 +49,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationStorage.cs" />
+    <Compile Include="Entities\ConfigInfo.cs" />
     <Compile Include="Entities\JobInfo.cs" />
     <Compile Include="Job\Exceptions\JobConfigFileException.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Extensions\XObjectExtensions.cs" />
     <Compile Include="IoC\WebShellModule.cs" />
     <Compile Include="Job\Exceptions\JobNotFoundException.cs" />
-    <Compile Include="Job\Info\JobInfoProvider.cs" />
-    <Compile Include="Job\Info\JobInfoSetProvider.cs" />
-    <Compile Include="Job\Config\JobConfigReader.cs" />
-    <Compile Include="Job\Config\JobSetConfigReader.cs" />
+    <Compile Include="Job\Config\JobInfoProcessor.cs" />
+    <Compile Include="Job\Config\ConfigInfoProcessor.cs" />
+    <Compile Include="Job\Config\JobInfoReader.cs" />
+    <Compile Include="Job\Config\ConfigInfoReader.cs" />
     <Compile Include="Job\JobBufferHandler.cs" />
     <Compile Include="Job\JobFinalizer.cs" />
     <Compile Include="Job\JobProvider.cs" />

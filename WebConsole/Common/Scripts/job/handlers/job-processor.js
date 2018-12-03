@@ -11,13 +11,23 @@ function startJob(job, args, callback) {
     $.connection.hub.start().done(function () {
         stream.server.startJob(job.location,
                                args).done(function (id) {
-            job.id = id;
-            job.lines = [];
-            job.status.value = "Initializing...";
-            job.isActive = true;
+            if (id > 0) {
+                job.id = id;
+                job.lines = [];
+                job.status.value = "Initializing...";
+                job.isActive = true;
 
-            saveJob(job);
-            callback();
+                saveJob(job);
+                callback();
+            } else {
+                var note = $(wcNoteModalClass);
+                note.find(wcModalTitleClass)
+                    .text("The maximum number of jobs reached!!!");
+                note.modal("show");
+                setTimeout(function () {
+                    note.modal("hide");
+                }, 2500);
+            }
         });
     });
 }

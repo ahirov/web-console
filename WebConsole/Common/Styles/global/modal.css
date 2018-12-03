@@ -2,7 +2,9 @@
 See LICENSE file in the solution root for full license information
 Copyright (c) 2018 Anton Hirov */
 
-var wcLogoDotClass = ".wc-logo-dot";
-
-var wcNoteModalClass  = ".wc-note-modal";
-var wcModalTitleClass = ".wc-modal-title";
+.wc-modal-title {
+    /* text */
+    text-align: center;
+    font-weight: bold;
+    line-height: 1.42;
+}
