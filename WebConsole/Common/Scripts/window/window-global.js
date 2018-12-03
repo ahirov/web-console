@@ -18,3 +18,4 @@ var wcWindowContentOutputClass = ".wc-window-content-output";
 var wcWindowContentInputClass  = ".wc-window-content-input";
 
 var wcWindowMinimizeButtonClass = ".wc-window-minimize-button";
+var wcWindowErrorStatusClass    = ".wc-window-error-status";

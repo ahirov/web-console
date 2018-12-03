@@ -2,6 +2,7 @@
 // See LICENSE file in the solution root for full license information
 // Copyright (c) 2018 Anton Hirov
 
+using System;
 using System.Diagnostics;
 using WebConsole.Core.Extensions;
 
@@ -31,7 +32,18 @@ namespace WebConsole.Core.Job
                 if (output.HasValue())
                     caller.read(job.Id, output);
             };
-            job.Exited += (sender, eventArgs) => caller.stop(job.Id);
+            job.Exited += (sender, eventArgs) =>
+            {
+                if (sender is Process process
+                    && process.ExitCode == 0)
+                    caller.stop(job.Id);
+            };
+            job.ErrorDataReceived += (sender, eventArgs) =>
+            {
+                var output = eventArgs.Data;
+                if (output.HasValue())
+                    caller.error(job.Id, output);
+            };
             return job;
         }
 
@@ -39,12 +51,13 @@ namespace WebConsole.Core.Job
         {
             return new ProcessStartInfo
             {
-                FileName  = location,
+                FileName = Environment.ExpandEnvironmentVariables(location),
                 Arguments = args,
-                RedirectStandardInput  = true,
+                RedirectStandardInput = true,
                 RedirectStandardOutput = true,
+                RedirectStandardError = true,
                 UseShellExecute = false,
-                CreateNoWindow  = true
+                CreateNoWindow = true
             };
         }
     }

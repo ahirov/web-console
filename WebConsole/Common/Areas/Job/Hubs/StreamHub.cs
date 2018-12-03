@@ -26,6 +26,7 @@ namespace WebConsole.Areas.Job.Hubs
                                           Clients.Caller);
             job.Start();
             job.BeginOutputReadLine();
+            job.BeginErrorReadLine();
 
             buffer.Add(job);
             return job.Id;

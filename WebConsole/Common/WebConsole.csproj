@@ -138,12 +138,13 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="job.xml" />
+    <Content Include="Scripts\job\entities\JobStatus.js" />
     <Content Include="Scripts\panel\events\panel-click-events.js" />
     <Content Include="Scripts\panel\entities\ViewContent.js" />
     <Content Include="Scripts\panel\entities\ViewMode.js" />
     <Content Include="Scripts\window\events\window-click-events.js" />
     <Content Include="Scripts\window\events\window-onload-events.js" />
-    <Content Include="Scripts\window\handlers\parts\window-footer-creator.js" />
+    <Content Include="Scripts\window\handlers\parts\window-footer-processor.js" />
     <Content Include="Scripts\window\handlers\window-container-creator.js" />
     <Content Include="Scripts\window\handlers\parts\window-content-creator.js" />
     <Content Include="Scripts\window\handlers\window-container-processor.js" />
@@ -316,6 +317,7 @@
     <Content Include="Styles\core\scss\_navbar.scss" />
     <Content Include="Views\Error\Critical.cshtml" />
     <Content Include="Views\Error\PageNotFound.cshtml" />
+    <Content Include="Styles\dependencies\bootstrap-4.1.3\_popover.scss" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -327,6 +329,10 @@
     <Folder Include="Areas\Job\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Tests\AttachedConsoleWithError\AttachedConsoleWithError.csproj">
+      <Project>{27a05296-9c53-4f28-bb6d-f6ccc708fc47}</Project>
+      <Name>AttachedConsoleWithError</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Tests\AttachedConsole\AttachedConsole.csproj">
       <Project>{b84b83f6-9b9b-4585-ba22-86526e3525ad}</Project>
       <Name>AttachedConsole</Name>

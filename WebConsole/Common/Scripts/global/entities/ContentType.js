@@ -5,5 +5,6 @@ Copyright (c) 2018 Anton Hirov */
 var ContentType = Object.freeze({
     STORAGE: 1,
     VIEW:    2,
-    JOB:     3
+    JOB:     3,
+    STATUS:  4
 });

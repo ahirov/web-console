@@ -5,11 +5,12 @@
 using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
-using AttachedConsole;
 using Newtonsoft.Json;
 using WebConsole.Controllers;
 using WebConsole.Core.Job;
 using WebConsole.Core.Job.Info;
+using Console = AttachedConsole;
+using ConsoleWithError = AttachedConsoleWithError;
 
 namespace WebConsole.Areas.Job.Controllers
 {
@@ -17,7 +18,7 @@ namespace WebConsole.Areas.Job.Controllers
     {
         private readonly IJobInfoSetProvider provider;
         private readonly IJobFinalizer finalizer;
-        
+
         public GlobalController(IJobInfoSetProvider provider,
                                 IJobFinalizer finalizer)
         {
@@ -33,7 +34,11 @@ namespace WebConsole.Areas.Job.Controllers
             // Attach your console application here
             // or
             // use jobs.xml configuration file!!!
-            var jobs = new List<Type> {typeof(Program)};
+            var jobs = new List<Type>
+            {
+                typeof(Console.Program),
+                typeof(ConsoleWithError.Program)
+            };
             var infos = provider.GetAll(jobs);
             return ReturnData(JsonConvert.SerializeObject(infos));
         }

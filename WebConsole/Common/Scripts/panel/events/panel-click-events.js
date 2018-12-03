@@ -6,8 +6,9 @@ $(document).ready(function () {
     $(wcStartJobButtonId).click(function () {
         var info = $(wcJobsListId).find(":selected")
                                   .data("jobInfo");
-
         var job = new JobContent(info);
+        job.status = new JobStatus();
+
         var args = $(wcJobArgsId).val();
         startJob(job, args, function () {
             processWindow(job);

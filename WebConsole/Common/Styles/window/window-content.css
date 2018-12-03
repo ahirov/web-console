@@ -6,6 +6,7 @@ Copyright (c) 2018 Anton Hirov */
     /* display */
     height: 20rem;
     min-height: 95%;
+    overflow-y: auto;
 
     /* border */
     border-top: 1px black solid;
@@ -32,4 +33,11 @@ Copyright (c) 2018 Anton Hirov */
 .wc-window-content-output {
     /* display */
     padding: 0 5px;
+}
+
+.wc-window-content-output > p {
+    /* text */
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }

@@ -29,6 +29,8 @@ function parseStorageContent(key, value) {
             return new ViewContent(value);
         } else if (type === ContentType.JOB) {
             return new JobContent(value);
+        } else if (type === ContentType.STATUS) {
+            return new JobStatus(value);
         }
     }
     return value;

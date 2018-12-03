@@ -17,4 +17,10 @@ Copyright (c) 2018 Anton Hirov */
 .wc-window-footer > p {
     /* display */
     padding: 0 5px;
+    height: 100%;
+}
+
+.wc-window-footer > p.wc-window-error-status {
+    /* color */
+    background-color: #dc3545;
 }

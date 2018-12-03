@@ -2,9 +2,9 @@
 <configuration>
   <settings></settings>
   <jobs>
-    <job namespace="Sci"
-         location="Q:\SciModule\SciConsoleApplication.exe">
-      SciConsoleApplication
+    <job namespace="Sandbox"
+         location="%SANDBOX%\ExternalConsole.exe">
+      ExternalConsole
     </job>
   </jobs>
 </configuration>

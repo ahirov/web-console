@@ -4,7 +4,7 @@ Copyright (c) 2018 Anton Hirov */
 
 $(document).ready(function () {
     $(function() {
-        $('[data-toggle="tooltip"]').tooltip();
+        $("[data-toggle='tooltip']").tooltip();
     });
 
     var handler = function (element, callback) {
