@@ -2,7 +2,6 @@
 See LICENSE file in the solution root for full license information
 Copyright (c) 2018 Anton Hirov */
 
-
 function createWindowTab(job) {
     var cell = $.CreateDiv()
                 .addClass("col-md-4")
