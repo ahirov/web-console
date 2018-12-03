@@ -17,4 +17,15 @@ $(document).ready(function () {
         }
         list.selectpicker("refresh");
     });
+
+    addEventListener("beforeunload", function () {
+        var ids = Object.values(loadAllJobs())
+                        .map(function (job) {
+                            return job.id;
+                        });
+        var data = { data: JSON.stringify(ids) };
+        stopAllJobsRequest(data, function () {
+            clearStorage();
+        });
+    });
 });

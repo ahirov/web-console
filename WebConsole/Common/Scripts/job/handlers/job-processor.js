@@ -39,3 +39,9 @@ function stopJob(id) {
         createDefaultSign(id);
     });
 }
+
+function stopJobs() {
+    Object.values(loadAllJobs()).forEach(function(job) {
+        stopJob(job.id);
+    });
+}

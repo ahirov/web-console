@@ -46,9 +46,10 @@ namespace WebConsole.Areas.Job.Controllers
         //
         // POST: /Job/Global/StopAll
         [HttpPost]
-        public ActionResult StopAll()
+        public ActionResult StopAll(string data)
         {
-            jobFinalizer.FinalAll();
+            var ids = JsonConvert.DeserializeObject<List<int>>(data);
+            jobFinalizer.FinalAll(ids);
             return Success();
         }
     }

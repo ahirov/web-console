@@ -170,7 +170,6 @@
     <Content Include="Scripts\job\events\job-onload-events.js" />
     <Content Include="Scripts\job\job-requests.js" />
     <Content Include="Scripts\job\job-storage.js" />
-    <Content Include="Scripts\job\events\job-unload-events.js" />
     <Content Include="Scripts\dependencies\signalR-2.4.0.js" />
     <Content Include="Scripts\dependencies\signalR-2.4.0.min.js" />
     <Content Include="Scripts\panel\panel-storage.js" />

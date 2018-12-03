@@ -31,4 +31,9 @@ $(document).ready(function () {
         saveViewMode(mode);
         return false;
     });
+
+    $(wcStopJobsButtonId).click(function () {
+        stopJobs();
+        return false;
+    });
 });

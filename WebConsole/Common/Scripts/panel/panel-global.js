@@ -7,3 +7,4 @@ var wcJobArgsId  = "#wc-job-args";
 
 var wcStartJobButtonId = "#wc-start-job-button";
 var wcViewModeButtonId = "#wc-view-mode-button";
+var wcStopJobsButtonId = "#wc-stop-jobs-button";

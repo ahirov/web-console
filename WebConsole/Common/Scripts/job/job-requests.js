@@ -6,6 +6,6 @@ function getAllJobsRequest(handler) {
     processReadRequest("/Job/Global/GetAll", handler);
 }
 
-function stopAllJobsRequest(handler) {
-    processReadRequest("/Job/Global/StopAll", handler);
+function stopAllJobsRequest(data, handler) {
+    processRequest("/Job/Global/StopAll", false, data, handler);
 }
