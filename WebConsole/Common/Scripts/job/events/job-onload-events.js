@@ -3,7 +3,7 @@ See LICENSE file in the solution root for full license information
 Copyright (c) 2018 Anton Hirov */
 
 $(document).ready(function () {
-    getAllJobsRequest(function (data) {
+    getJobInfosRequest(function (data) {
         var list = $(wcJobsListId);
         var infos = JSON.parse(data);
 
@@ -24,7 +24,7 @@ $(document).ready(function () {
                             return job.id;
                         });
         var data = { data: JSON.stringify(ids) };
-        stopAllJobsRequest(data, function () {
+        stopOwnJobsRequest(data, function () {
             clearStorage();
         });
     });

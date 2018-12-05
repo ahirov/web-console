@@ -32,6 +32,13 @@ $(document).ready(function () {
         return false;
     });
 
+    $(wcStatisticsButtonId).click(function() {
+        getJobStatisticsReguest(function(data) {
+            processStatisticsModal(JSON.parse(data));
+        });
+        return false;
+    });
+
     $(wcStopJobsButtonId).click(function () {
         stopJobs();
         return false;

@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="ApplicationStorage.cs" />
     <Compile Include="Entities\ConfigInfo.cs" />
+    <Compile Include="Entities\JobDescription.cs" />
     <Compile Include="Entities\JobInfo.cs" />
     <Compile Include="Job\Exceptions\JobConfigFileException.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
@@ -61,6 +62,7 @@
     <Compile Include="Job\Config\JobInfoReader.cs" />
     <Compile Include="Job\Config\ConfigInfoReader.cs" />
     <Compile Include="Job\JobBufferHandler.cs" />
+    <Compile Include="Job\JobDescriptionsProvider.cs" />
     <Compile Include="Job\JobFinalizer.cs" />
     <Compile Include="Job\JobProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -4,7 +4,9 @@ Copyright (c) 2018 Anton Hirov */
 
 $(document).ready(function () {
     $(function() {
-        $("[data-toggle='tooltip']").tooltip();
+        $("[data-toggle='tooltip']").tooltip({
+            trigger: "hover"
+        });
     });
 
     var handler = function (element, callback) {
@@ -22,4 +24,9 @@ $(document).ready(function () {
         });
     };
     animateLogo();
+
+    $(wcModalCloseButtonClass).click(function () {
+        $(wcWindowModalClass).modal("hide");
+        return false;
+    });
 });

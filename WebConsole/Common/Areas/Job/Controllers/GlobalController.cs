@@ -19,19 +19,22 @@ namespace WebConsole.Areas.Job.Controllers
     public class GlobalController : BaseController
     {
         private readonly IConfigInfoProcessor configProcessor;
+        private readonly IJobDescriptionsProvider jobProvider;
         private readonly IJobFinalizer jobFinalizer;
 
         public GlobalController(IConfigInfoProcessor configProcessor,
+                                IJobDescriptionsProvider jobProvider,
                                 IJobFinalizer jobFinalizer)
         {
             this.configProcessor = configProcessor;
+            this.jobProvider = jobProvider;
             this.jobFinalizer = jobFinalizer;
         }
 
         //
-        // POST: /Job/Global/GetAll
+        // POST: /Job/Global/GetInfos
         [HttpPost]
-        public ActionResult GetAll()
+        public ActionResult GetInfos()
         {
             var jobs = new List<Type>
             {
@@ -44,9 +47,18 @@ namespace WebConsole.Areas.Job.Controllers
         }
 
         //
-        // POST: /Job/Global/StopAll
+        // POST: /Job/Global/GetStatistics
         [HttpPost]
-        public ActionResult StopAll(string data)
+        public ActionResult GetStatistics()
+        {
+            var descriptions = jobProvider.GetDescriptions();
+            return ReturnData(JsonConvert.SerializeObject(descriptions));
+        }
+
+        //
+        // POST: /Job/Global/StopAllOwn
+        [HttpPost]
+        public ActionResult StopAllOwn(string data)
         {
             var ids = JsonConvert.DeserializeObject<List<int>>(data);
             jobFinalizer.FinalAll(ids);

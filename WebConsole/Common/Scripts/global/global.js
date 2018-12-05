@@ -6,3 +6,7 @@ var wcLogoDotClass = ".wc-logo-dot";
 
 var wcNoteModalClass  = ".wc-note-modal";
 var wcModalTitleClass = ".wc-modal-title";
+
+var wcWindowModalClass  = ".wc-window-modal";
+var wcModalContentClass = ".wc-modal-content";
+var wcModalCloseButtonClass = ".wc-modal-close-button";

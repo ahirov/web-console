@@ -2,10 +2,14 @@
 See LICENSE file in the solution root for full license information
 Copyright (c) 2018 Anton Hirov */
 
-function getAllJobsRequest(handler) {
-    processReadRequest("/Job/Global/GetAll", handler);
+function getJobInfosRequest(handler) {
+    processReadRequest("/Job/Global/GetInfos", handler);
 }
 
-function stopAllJobsRequest(data, handler) {
-    processRequest("/Job/Global/StopAll", false, data, handler);
+function getJobStatisticsReguest(handler) {
+    processReadRequest("/Job/Global/GetStatistics", handler);
+}
+
+function stopOwnJobsRequest(data, handler) {
+    processRequest("/Job/Global/StopAllOwn", false, data, handler);
 }

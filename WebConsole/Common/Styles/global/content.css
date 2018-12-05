@@ -48,10 +48,8 @@ Copyright (c) 2018 Anton Hirov */
     margin: 0.25rem;
 
     /* border */
-    -ms-border-radius: 4px;
-    border-radius: 4px;
     border: 1px solid black;
-    
+
     /* color */
     background-color: #343a40;
     color: #fff;
