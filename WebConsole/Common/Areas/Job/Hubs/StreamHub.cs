@@ -2,23 +2,24 @@
 // See LICENSE file in the solution root for full license information
 // Copyright (c) 2018 Anton Hirov
 
-using System.Configuration;
-using System.Diagnostics;
 using Microsoft.AspNet.SignalR;
 using WebConsole.Core.Job;
-using static WebConsole.Core.ApplicationConstants;
+using WebConsole.Core.Job.Initialization;
 
 namespace WebConsole.Areas.Job.Hubs
 {
     public class StreamHub : Hub
     {
-        private readonly IJobProvider provider;
+        private readonly IJobProvider jobProvider;
+        private readonly IJobProcessor jobProcessor;
         private readonly IJobBufferHandler buffer;
 
-        public StreamHub(IJobProvider provider,
+        public StreamHub(IJobProvider jobProvider,
+                         IJobProcessor jobProcessor,
                          IJobBufferHandler buffer)
         {
-            this.provider = provider;
+            this.jobProvider = jobProvider;
+            this.jobProcessor = jobProcessor;
             this.buffer = buffer;
         }
 
@@ -27,15 +28,11 @@ namespace WebConsole.Areas.Job.Hubs
             var id = 0;
             buffer.Run(all =>
             {
-                if (all.Count < GetLimit())
+                if (all.Count < jobProcessor.GetLimit())
                 {
-                    Process job = provider.GetJob(location, args,
-                                                  Clients.Caller);
-                    job.Start();
-                    job.BeginOutputReadLine();
-                    job.BeginErrorReadLine();
-                    id = job.Id;
-                    all[id] = job;
+                    var job = jobProvider.GetJob(location, args,
+                                                 Clients.Caller);
+                    id = jobProcessor.Process(job, all);
                 }
             });
             return id;
@@ -43,26 +40,20 @@ namespace WebConsole.Areas.Job.Hubs
 
         public void StopJob(int id)
         {
-            buffer.Run(id, (job, all) =>
+            buffer.Run(id, (item, all) =>
             {
-                if(!job.HasExited)
-                    job.Kill();
-                job.Dispose();
+                var process = item.Process;
+                if(!process.HasExited)
+                    process.Kill();
+                process.Dispose();
                 all.Remove(id);
             });
         }
 
         public void Write(int id, string input)
         {
-            buffer.Run(id, (job, all) =>
-                          { job.StandardInput.WriteLine(input); });
-        }
-
-        private static int GetLimit()
-        {
-            var setting = ConfigurationManager.AppSettings[JobsLimitLiteral];
-            var isSuccessful = int.TryParse(setting, out var limit);
-            return isSuccessful ? limit : DefaultJobsLimit;
+            buffer.Run(id, (item, all) =>
+                          { item.Process.StandardInput.WriteLine(input); });
         }
     }
 }

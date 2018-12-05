@@ -3,8 +3,8 @@
 // Copyright (c) 2018 Anton Hirov
 
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
+using WebConsole.Core.Entities;
 
 namespace WebConsole.Core.Job
 {
@@ -43,11 +43,12 @@ namespace WebConsole.Core.Job
             buffer.Clear();
         }
 
-        private static void FinalJob(Process job)
+        private static void FinalJob(JobContent content)
         {
-            if (!job.HasExited)
-                job.Kill();
-            job.Dispose();
+            var process = content.Process;
+            if (!process.HasExited)
+                process.Kill();
+            process.Dispose();
         }
     }
 }

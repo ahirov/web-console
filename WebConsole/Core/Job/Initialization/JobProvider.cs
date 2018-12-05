@@ -2,11 +2,10 @@
 // See LICENSE file in the solution root for full license information
 // Copyright (c) 2018 Anton Hirov
 
-using System;
 using System.Diagnostics;
 using WebConsole.Core.Extensions;
 
-namespace WebConsole.Core.Job
+namespace WebConsole.Core.Job.Initialization
 {
     public interface IJobProvider
     {
@@ -17,13 +16,20 @@ namespace WebConsole.Core.Job
 
     public class JobProvider : IJobProvider
     {
+        private readonly IJobParamsProvider paramsProvider;
+
+        public JobProvider(IJobParamsProvider paramsProvider)
+        {
+            this.paramsProvider = paramsProvider;
+        }
+
         public Process GetJob(string location,
                               string args,
                               dynamic caller)
         {
             var job = new Process
             {
-                StartInfo = GetInfo(location, args),
+                StartInfo = paramsProvider.GetParams(location, args),
                 EnableRaisingEvents = true
             };
             job.OutputDataReceived += (sender, eventArgs) =>
@@ -45,20 +51,6 @@ namespace WebConsole.Core.Job
                     caller.error(job.Id, output);
             };
             return job;
-        }
-
-        private static ProcessStartInfo GetInfo(string location, string args)
-        {
-            return new ProcessStartInfo
-            {
-                FileName = Environment.ExpandEnvironmentVariables(location),
-                Arguments = args,
-                RedirectStandardInput = true,
-                RedirectStandardOutput = true,
-                RedirectStandardError = true,
-                UseShellExecute = false,
-                CreateNoWindow = true
-            };
         }
     }
 }

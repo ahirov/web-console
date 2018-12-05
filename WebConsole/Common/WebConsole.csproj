@@ -140,10 +140,11 @@
     <Content Include="Scripts\job\entities\JobStatus.js" />
     <Content Include="Scripts\job\handlers\job-read-processor.js" />
     <Content Include="Scripts\job\handlers\job-error-processor.js" />
+    <Content Include="Scripts\job\handlers\job-start-processor.js" />
     <Content Include="Scripts\panel\events\panel-click-events.js" />
     <Content Include="Scripts\panel\entities\ViewContent.js" />
     <Content Include="Scripts\panel\entities\ViewMode.js" />
-    <Content Include="Scripts\panel\handlers\panel-statistics-processor.js" />
+    <Content Include="Scripts\panel\handlers\panel-descriptions-processor.js" />
     <Content Include="Scripts\window\events\window-click-events.js" />
     <Content Include="Scripts\window\events\window-onload-events.js" />
     <Content Include="Scripts\window\handlers\parts\window-footer-processor.js" />
@@ -174,7 +175,7 @@
     <Content Include="Scripts\dependencies\signalR-2.4.0.js" />
     <Content Include="Scripts\dependencies\signalR-2.4.0.min.js" />
     <Content Include="Scripts\panel\panel-storage.js" />
-    <Content Include="Styles\global\content.css" />
+    <Content Include="Styles\window\window-container.css" />
     <Content Include="Styles\window\window-content.css" />
     <Content Include="Styles\core\core.css" />
     <Content Include="Styles\core\core.css.map" />

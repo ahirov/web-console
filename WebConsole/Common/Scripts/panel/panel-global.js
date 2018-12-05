@@ -5,7 +5,7 @@ Copyright (c) 2018 Anton Hirov */
 var wcJobsListId = "#wc-jobs-list";
 var wcJobArgsId  = "#wc-job-args";
 
-var wcStartJobButtonId   = "#wc-start-job-button";
-var wcViewModeButtonId   = "#wc-view-mode-button";
-var wcStatisticsButtonId = "#wc-statistics-button";
-var wcStopJobsButtonId   = "#wc-stop-jobs-button";
+var wcStartJobButtonId = "#wc-start-job-button";
+var wcStopJobsButtonId = "#wc-stop-jobs-button";
+var wcViewModeButtonId = "#wc-view-mode-button";
+var wcJobDescriptionsButtonId = "#wc-job-descriptions-button";

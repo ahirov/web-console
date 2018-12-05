@@ -10,9 +10,7 @@ $(document).ready(function () {
         job.status = new JobStatus();
 
         var args = $(wcJobArgsId).val();
-        startJob(job, args, function () {
-            processWindow(job);
-        });
+        startJob(job, args);
         return false;
     });
 
@@ -32,15 +30,16 @@ $(document).ready(function () {
         return false;
     });
 
-    $(wcStatisticsButtonId).click(function() {
-        getJobStatisticsReguest(function(data) {
-            processStatisticsModal(JSON.parse(data));
+    $(wcJobDescriptionsButtonId).click(function() {
+        getJobDescriptionsReguest(function(data) {
+            processJobDescriptionsWindow(JSON.parse(data));
         });
         return false;
     });
 
     $(wcStopJobsButtonId).click(function () {
         stopJobs();
+        $(wcTabsContainerId).empty();
         return false;
     });
 });

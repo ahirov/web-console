@@ -6,8 +6,8 @@ function getJobInfosRequest(handler) {
     processReadRequest("/Job/Global/GetInfos", handler);
 }
 
-function getJobStatisticsReguest(handler) {
-    processReadRequest("/Job/Global/GetStatistics", handler);
+function getJobDescriptionsReguest(handler) {
+    processReadRequest("/Job/Global/GetDescriptions", handler);
 }
 
 function stopOwnJobsRequest(data, handler) {

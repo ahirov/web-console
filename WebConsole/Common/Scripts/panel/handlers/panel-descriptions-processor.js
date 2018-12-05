@@ -2,7 +2,7 @@
 See LICENSE file in the solution root for full license information
 Copyright (c) 2018 Anton Hirov */
 
-function processStatisticsModal(descriptions) {
+function processJobDescriptionsWindow(descriptions) {
     var window = $(wcWindowModalClass);
     var container = window.find(wcModalContentClass)
                           .empty();

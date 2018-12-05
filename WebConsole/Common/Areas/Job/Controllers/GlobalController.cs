@@ -10,6 +10,7 @@ using Newtonsoft.Json;
 using WebConsole.Controllers;
 using WebConsole.Core.Job;
 using WebConsole.Core.Job.Config;
+using WebConsole.Core.Job.Description;
 using Console = AttachedConsole;
 using ConsoleWithError = AttachedConsoleWithError;
 using static WebConsole.Core.ApplicationConstants;
@@ -47,9 +48,9 @@ namespace WebConsole.Areas.Job.Controllers
         }
 
         //
-        // POST: /Job/Global/GetStatistics
+        // POST: /Job/Global/GetDescriptions
         [HttpPost]
-        public ActionResult GetStatistics()
+        public ActionResult GetDescriptions()
         {
             var descriptions = jobProvider.GetDescriptions();
             return ReturnData(JsonConvert.SerializeObject(descriptions));

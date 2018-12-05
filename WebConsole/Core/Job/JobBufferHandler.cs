@@ -4,7 +4,7 @@
 
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
+using WebConsole.Core.Entities;
 using WebConsole.Core.Job.Exceptions;
 using static WebConsole.Core.ApplicationConstants;
 
@@ -12,22 +12,22 @@ namespace WebConsole.Core.Job
 {
     public interface IJobBufferHandler
     {
-        void Run(int id, Action<Process, Dictionary<int, Process>> action);
-        void Run(Action<Dictionary<int, Process>> action);
-        void RunAll(Action<Process> action);
+        void Run(int id, Action<JobContent, Dictionary<int, JobContent>> action);
+        void Run(Action<Dictionary<int, JobContent>> action);
+        void RunAll(Action<JobContent> action);
         void Clear();
     }
 
     public class JobBufferHandler : IJobBufferHandler
     {
-        private readonly IApplicationStorage<Dictionary<int, Process>> buffer;
+        private readonly IApplicationStorage<Dictionary<int, JobContent>> buffer;
 
-        public JobBufferHandler(IApplicationStorage<Dictionary<int, Process>> buffer)
+        public JobBufferHandler(IApplicationStorage<Dictionary<int, JobContent>> buffer)
         {
             this.buffer = buffer;
         }
 
-        public void Run(int id, Action<Process, Dictionary<int, Process>> action)
+        public void Run(int id, Action<JobContent, Dictionary<int, JobContent>> action)
         {
             buffer.Invoke(JobSetKey, all =>
             {
@@ -38,12 +38,12 @@ namespace WebConsole.Core.Job
             });
         }
 
-        public void Run(Action<Dictionary<int, Process>> action)
+        public void Run(Action<Dictionary<int, JobContent>> action)
         {
             buffer.Invoke(JobSetKey, action.Invoke);
         }
 
-        public void RunAll(Action<Process> action)
+        public void RunAll(Action<JobContent> action)
         {
             buffer.Invoke(JobSetKey, all =>
             {

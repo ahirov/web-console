@@ -25,16 +25,10 @@ Copyright (c) 2018 Anton Hirov */
     font-family: monospace;
 }
 
-@media (min-width: 768px) {
-    #wc-windows-container {
-        /* display */
-        margin-top: 2rem;
-    }
-}
-
 #wc-tabs-container {
     /* display */
     margin: 0.5rem 0;
+    min-height: 34px;
 }
 
 #wc-tabs-container > div {

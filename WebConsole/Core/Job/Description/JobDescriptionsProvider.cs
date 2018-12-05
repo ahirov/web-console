@@ -5,7 +5,7 @@
 using System.Collections.Generic;
 using WebConsole.Core.Entities;
 
-namespace WebConsole.Core.Job
+namespace WebConsole.Core.Job.Description
 {
     public interface IJobDescriptionsProvider
     {
@@ -24,13 +24,9 @@ namespace WebConsole.Core.Job
         public List<JobDescription> GetDescriptions()
         {
             var descriptions = new List<JobDescription>();
-            buffer.RunAll(process =>
+            buffer.RunAll(content =>
             {
-                descriptions.Add(new JobDescription
-                {
-                    Name      = process.MainModule.ModuleName,
-                    StartTime = process.StartTime.ToString("F")
-                });
+                descriptions.Add(content.Description);
             });
             return descriptions;
         }
