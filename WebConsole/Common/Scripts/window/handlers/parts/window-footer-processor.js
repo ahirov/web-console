@@ -17,7 +17,7 @@ function updateWindowFooter(status, container) {
     if (status.isError) {
         line.addClass(wcWindowErrorStatusClass.GetName())
             .popover({
-                container: wcWindowClass,
+                container: container,
                 placement: "bottom",
                 trigger: "hover",
                 html: true
