@@ -1,3 +1,7 @@
 ﻿a:active{
     color: $danger;
 }
+
+a.disabled {
+    cursor: default;
+}

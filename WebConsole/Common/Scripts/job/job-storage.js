@@ -14,7 +14,8 @@ function loadAllJobs() {
 }
 
 function loadJob(id) {
-    return loadAllJobs()[id];
+    return loadAllJobs()[id]
+        || loadAllJobs()[null];
 }
 
 function removeJob(id) {

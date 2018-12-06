@@ -16,10 +16,14 @@ $(document).ready(function () {
              .appendTo(list);
         }
         list.selectpicker("refresh");
+        initJobStreamHub();
     });
 
     addEventListener("beforeunload", function () {
         var ids = Object.values(loadAllJobs())
+                        .filter(function(job) {
+                            return job.id;
+                        })
                         .map(function (job) {
                             return job.id;
                         });

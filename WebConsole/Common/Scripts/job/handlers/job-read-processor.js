@@ -4,17 +4,19 @@ Copyright (c) 2018 Anton Hirov */
 
 function processReadJob(id, value) {
     var job = loadJob(id);
+    job.lines.push(value);
+
+    var status = job.status;
+    if (!status.isError) {
+        status.value = "Working...";
+    }
+    saveJob(job);
     if (job.isActive) {
         var container = getWindowContainer(job.id);
-        var status = job.status;
-        if (!status.isError) {
-            status.value = "Working...";
-            updateWindowFooter(status, container);
-        }
+        updateWindowFooter(status, container);
+
         $.CreateParagraph()
          .append(value)
          .appendTo(container.find(wcWindowContentOutputClass));
     }
-    job.lines.push(value);
-    saveJob(job);
 }

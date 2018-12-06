@@ -14,7 +14,9 @@ function processStopJob(id, message) {
         status.error = message;
         status.isError = true;
     }
-    var container = getWindowContainer(job.id);
-    updateWindowFooter(status, container);
     saveJob(job);
+    if (job.isActive) {
+        var container = getWindowContainer(job.id);
+        updateWindowFooter(status, container);
+    }
 }

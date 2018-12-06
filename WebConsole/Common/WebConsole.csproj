@@ -138,12 +138,15 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="Scripts\job\entities\JobStatus.js" />
+    <Content Include="Scripts\job\handlers\job-init-processor.js" />
     <Content Include="Scripts\job\handlers\job-read-processor.js" />
     <Content Include="Scripts\job\handlers\job-error-processor.js" />
     <Content Include="Scripts\job\handlers\job-start-processor.js" />
-    <Content Include="Scripts\panel\events\panel-click-events.js" />
+    <Content Include="Scripts\panel\events\panel-job-click-events.js" />
     <Content Include="Scripts\panel\entities\ViewContent.js" />
     <Content Include="Scripts\panel\entities\ViewMode.js" />
+    <Content Include="Scripts\panel\events\panel-mode-click-events.js" />
+    <Content Include="Scripts\panel\handlers\panel-click-processor.js" />
     <Content Include="Scripts\panel\handlers\panel-descriptions-processor.js" />
     <Content Include="Scripts\window\events\window-click-events.js" />
     <Content Include="Scripts\window\events\window-onload-events.js" />

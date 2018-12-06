@@ -2,13 +2,15 @@
 See LICENSE file in the solution root for full license information
 Copyright (c) 2018 Anton Hirov */
 
-function processStartJob(id, job) {
+function processStartJob(id) {
+    var job = loadJob(null);
     if (id > 0) {
         job.id = id;
-        job.lines = [];
-        job.status.value = "Initializing...";
         job.isActive = true;
 
+        if (job.status.value === null) {
+            job.status.value = "Initializing...";
+        }
         saveJob(job);
         processWindow(job);
     } else {
@@ -20,4 +22,5 @@ function processStartJob(id, job) {
             note.modal("hide");
         }, 2500);
     }
+    removeJob(null);
 }

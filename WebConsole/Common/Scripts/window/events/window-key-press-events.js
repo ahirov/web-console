@@ -13,7 +13,9 @@ function windowContentKeyPressEvent(event) {
          .appendTo(input.siblings(wcWindowContentOutputClass));
         input.val("");
 
-        var stream = $.connection.streamHub;
-        stream.server.write(input.data("id"), value);
+        $.connection.hub.start().done(function () {
+            var server = $.connection.streamHub.server;
+            server.write(input.data("id"), value);
+        });
     }
 }

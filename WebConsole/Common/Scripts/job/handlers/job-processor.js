@@ -2,25 +2,23 @@
 See LICENSE file in the solution root for full license information
 Copyright (c) 2018 Anton Hirov */
 
-function startJob(job, args) {
-    var stream = $.connection.streamHub;
-    stream.client.read = processReadJob;
-    stream.client.stop = function (id) { stopJob(id); };
-    stream.client.error = processStopJob;
-
+function startJob(location, args) {
     $.connection.hub.start().done(function () {
-        stream.server.startJob(job.location, args)
-                     .done(function (id) {
-            processStartJob(id, job);
+        var server = $.connection.streamHub.server;
+        server.startJob(location, args).done(function(id) {
+            processStartJob(id);
+            enableStartJobButton();
         });
     });
 }
 
 function stopJob(id) {
-    var stream = $.connection.streamHub;
-    stream.server.stopJob(id).done(function () {
-        removeJob(id);
-        createDefaultSign(id);
+    $.connection.hub.start().done(function () {
+        var server = $.connection.streamHub.server;
+        server.stopJob(id).done(function () {
+            removeJob(id);
+            createDefaultSign(id);
+        });
     });
 }
 

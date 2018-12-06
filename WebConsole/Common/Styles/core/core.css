@@ -8978,4 +8978,8 @@ a:active {
   color: #dc3545;
 }
 
+a.disabled {
+  cursor: default;
+}
+
 /*# sourceMappingURL=core.css.map */
