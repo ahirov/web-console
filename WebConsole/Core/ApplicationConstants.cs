@@ -11,6 +11,7 @@ namespace WebConsole.Core
 
         // CONFIG
         public const string WcConfigFile = "WebConsole.config";
+        public const int CleanUpInterval = 1800000;
         public const int DefaultJobsLimit = 12;
 
         // CODE

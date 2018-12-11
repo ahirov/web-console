@@ -58,7 +58,6 @@
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Extensions\XObjectExtensions.cs" />
     <Compile Include="IoC\WebShellModule.cs" />
-    <Compile Include="Job\Exceptions\JobNotFoundException.cs" />
     <Compile Include="Job\Config\JobInfoProcessor.cs" />
     <Compile Include="Job\Config\ConfigInfoProcessor.cs" />
     <Compile Include="Job\Config\JobInfoReader.cs" />

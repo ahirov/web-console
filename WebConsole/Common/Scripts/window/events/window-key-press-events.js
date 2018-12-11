@@ -8,14 +8,21 @@ function windowContentKeyPressEvent(event) {
         var input = $(this);
         var value = input.val();
 
+        var container = input.siblings(wcWindowContentOutputClass);
         $.CreateParagraph()
          .append(value)
-         .appendTo(input.siblings(wcWindowContentOutputClass));
+         .appendTo(container);
         input.val("");
 
         $.connection.hub.start().done(function () {
             var server = $.connection.streamHub.server;
-            server.write(input.data("id"), value);
+            server.write(input.data("id"), value).done(function(isSuccessful) {
+                if (!isSuccessful) {
+                    $.CreateParagraph()
+                     .append("The time of existence of the console has come out. Create a new one!")
+                     .appendTo(container);
+                }
+            });
         });
     }
 }

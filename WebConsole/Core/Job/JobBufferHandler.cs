@@ -5,14 +5,13 @@
 using System;
 using System.Collections.Generic;
 using WebConsole.Core.Entities;
-using WebConsole.Core.Job.Exceptions;
 using static WebConsole.Core.ApplicationConstants;
 
 namespace WebConsole.Core.Job
 {
     public interface IJobBufferHandler
     {
-        void Run(int id, Action<JobContent, Dictionary<int, JobContent>> action);
+        bool Run(int id, Action<JobContent, Dictionary<int, JobContent>> action);
         void Run(Action<Dictionary<int, JobContent>> action);
         void RunAll(Action<JobContent> action);
         void Clear();
@@ -27,15 +26,18 @@ namespace WebConsole.Core.Job
             this.buffer = buffer;
         }
 
-        public void Run(int id, Action<JobContent, Dictionary<int, JobContent>> action)
+        public bool Run(int id, Action<JobContent, Dictionary<int, JobContent>> action)
         {
+            var isSuccessful = false;
             buffer.Invoke(JobSetKey, all =>
             {
                 if (all.ContainsKey(id))
+                {
                     action.Invoke(all[id], all);
-                else
-                    throw new JobNotFoundException(id);
+                    isSuccessful = true;
+                }
             });
+            return isSuccessful;
         }
 
         public void Run(Action<Dictionary<int, JobContent>> action)

@@ -27,6 +27,8 @@ namespace WebConsole
         protected void Application_End()
         {
             StartupConfig.Container.Resolve<IJobFinalizer>().FinalAll();
+            StartupConfig.CleanUpTimer.Stop();
+            StartupConfig.CleanUpTimer.Dispose();
         }
 
         protected void Application_Error(object sender, EventArgs e)

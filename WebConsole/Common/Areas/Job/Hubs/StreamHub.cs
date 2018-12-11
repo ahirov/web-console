@@ -50,10 +50,10 @@ namespace WebConsole.Areas.Job.Hubs
             });
         }
 
-        public void Write(int id, string input)
+        public bool Write(int id, string input)
         {
-            buffer.Run(id, (item, all) =>
-                          { item.Process.StandardInput.WriteLine(input); });
+            return buffer.Run(id, (item, all) =>
+                 { item.Process.StandardInput.WriteLine(input); });
         }
     }
 }

@@ -8978,6 +8978,10 @@ a:active {
   color: #dc3545;
 }
 
+a:focus {
+  outline: none;
+}
+
 a.disabled {
   cursor: default;
 }
