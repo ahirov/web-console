@@ -2,6 +2,7 @@
 // See LICENSE file in the solution root for full license information
 // Copyright (c) 2018 Anton Hirov
 
+using System;
 using System.Diagnostics;
 using WebConsole.Core.Extensions;
 
@@ -40,9 +41,16 @@ namespace WebConsole.Core.Job.Initialization
             };
             job.Exited += (sender, eventArgs) =>
             {
-                if (sender is Process process
-                    && process.ExitCode == 0)
-                    caller.stop(job.Id);
+                try
+                {
+                    if (sender is Process process
+                     && process.ExitCode == 0)
+                        caller.stop(job.Id);
+                }
+                catch (Exception)
+                {
+                    // ignored
+                }
             };
             job.ErrorDataReceived += (sender, eventArgs) =>
             {
