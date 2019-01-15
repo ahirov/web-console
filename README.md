@@ -1,6 +1,5 @@
 # WebConsole
-This tool allows you to work with a console application on the remote server from your web browser<br />
-**Live version:** https://webconsoletrial.azurewebsites.net/ (very slow via the free trial plan)<br /><br />
+This tool allows you to work with a console application on the remote server from your web browser<br /><br />
 ![Overview](https://github.com/hirov-anton/web-console/blob/master/content/overview.gif)
 ## Deployment
 **1.** Clone this repo to your local machine (master branch)<br />
