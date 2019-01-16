@@ -4,9 +4,9 @@ Copyright (c) 2018 Anton Hirov */
 
 var wcTabsContainerId    = "#wc-tabs-container";
 var wcWindowsContainerId = "#wc-windows-container";
-var wcDefaultSignClass   = ".wc-default-sign";
 
 var wcWindowContainerClass = ".wc-window-container";
+var wcDefaultContentClass  = ".wc-default-content";
 
 var wcWindowClass       = ".wc-window";
 var wcWindowHeaderClass = ".wc-window-header";

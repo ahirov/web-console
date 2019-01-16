@@ -1,2 +1,6 @@
-sass Styles/core/scss/core.scss Styles/core/core.css --embed-sources --style expanded
-sass Styles/core/scss/core.scss Styles/core/core.min.css --no-source-map --style compressed
+$input     = "Styles/web-console.scss"
+$output    = "Styles/_output/web-console.css"
+$outputMin = "Styles/_output/web-console.min.css"
+
+sass $input $outputMin --no-source-map --style compressed
+sass $input $output    --embed-sources --style expanded --watch

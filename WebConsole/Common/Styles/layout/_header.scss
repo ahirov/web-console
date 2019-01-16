@@ -1,0 +1,37 @@
+﻿#wc-logo {
+    > i, > span {
+        display: table-cell;
+    }
+
+    > span:first-child {
+        padding-right: 2px;
+    }
+
+    .wc-logo-dot {
+        -ms-opacity: 0;
+        opacity: 0;
+    }
+}
+
+$header-item: "#wc-header-content > ul > li";
+
+@media (max-width: map-get($grid-breakpoints, md) - 1) {
+    #{$header-item}:last-child a {
+        padding: {
+            right: 7px;
+            left: 7px;
+        }
+    }
+}
+
+@mixin respond-to($min-width, $width) {
+    @media (min-width: $min-width) {
+        #{$header-item} > div.bootstrap-select,
+        #{$header-item} > input {
+            width: $width;
+        }
+    }
+}
+
+@include respond-to(map-get($grid-breakpoints, md), 160px);
+@include respond-to(map-get($grid-breakpoints, lg), 220px);

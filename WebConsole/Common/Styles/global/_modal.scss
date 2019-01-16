@@ -1,0 +1,35 @@
+﻿%wc-modal-body {
+    padding: 0;
+    border: $wc-border;
+
+    background-color: $dark;
+    color: $white;
+}
+
+.wc-window-modal {
+    .wc-modal-body {
+        @extend %wc-modal-body;
+
+        .wc-modal-header {
+            padding: $wc-padding;
+            border-bottom: $wc-border;
+            background-color: $secondary;
+        }
+
+        .wc-modal-content {
+            padding: $wc-padding;
+            min-height: 200px;
+        }
+    }
+}
+
+.wc-note-modal {
+    .wc-modal-body {
+        @extend %wc-modal-body;
+
+        .wc-modal-title {
+            text-align: center;
+            line-height: 2;
+        }
+    }
+}

@@ -1,0 +1,14 @@
+﻿$wc-padding: 0 5px;
+$wc-border: 1px black solid;
+
+%wc-text-overflow {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+@import "dependencies/bootstrap-4.1.3/bootstrap";
+@import "global/global";
+
+@import "layout/layout";
+@import "window/window";

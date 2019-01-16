@@ -1,0 +1,15 @@
+﻿@import "../dependencies/bootstrap-select-1.13.3/core/bootstrap-select";
+
+.bootstrap-select {
+    .dropdown-toggle:focus,
+    .dropdown-item:focus {
+        outline:    none !important;
+        box-shadow: none !important;
+    }
+
+    > button {
+        border-width: 1px;
+        background-color: $white !important;
+        border-color:     $dark  !important;
+    }
+}

@@ -1,4 +1,10 @@
-@charset "UTF-8";
+﻿@charset "UTF-8";
+.wc-window-header > span, .wc-window-content .wc-window-content-output > p {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
 :root {
   --blue: #007bff;
   --indigo: #6610f2;
@@ -8604,17 +8610,26 @@ h3 {
     border-color: #dee2e6;
   }
 }
-@media (min-width: 0) and (max-width: 576px) {
-  .container {
-    padding: 0;
-  }
-
-  .container > div {
-    padding: 15px;
-  }
+.wc-note-modal .wc-modal-body, .wc-window-modal .wc-modal-body {
+  padding: 0;
+  border: 1px black solid;
+  background-color: #343a40;
+  color: #fff;
 }
-.navbar-toggler {
-  outline: none !important;
+
+.wc-window-modal .wc-modal-body .wc-modal-header {
+  padding: 0 5px;
+  border-bottom: 1px black solid;
+  background-color: #6c757d;
+}
+.wc-window-modal .wc-modal-body .wc-modal-content {
+  padding: 0 5px;
+  min-height: 200px;
+}
+
+.wc-note-modal .wc-modal-body .wc-modal-title {
+  text-align: center;
+  line-height: 2;
 }
 
 select.bs-select-hidden,
@@ -8967,23 +8982,173 @@ select.selectpicker {
   outline: none !important;
   box-shadow: none !important;
 }
-
 .bootstrap-select > button {
   border-width: 1px;
   background-color: #fff !important;
   border-color: #343a40 !important;
 }
 
+html {
+  min-height: 100%;
+  position: relative;
+}
+
+body {
+  margin-bottom: 22px;
+  font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 a:active {
   color: #dc3545;
 }
-
 a:focus {
   outline: none;
 }
-
 a.disabled {
   cursor: default;
 }
 
-/*# sourceMappingURL=core.css.map */
+.navbar-toggler {
+  outline: none !important;
+}
+
+.wc-error {
+  padding: 0 15px;
+}
+.wc-error .wc-error-title {
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+#wc-logo > i, #wc-logo > span {
+  display: table-cell;
+}
+#wc-logo > span:first-child {
+  padding-right: 2px;
+}
+#wc-logo .wc-logo-dot {
+  -ms-opacity: 0;
+  opacity: 0;
+}
+
+@media (max-width: 767px) {
+  #wc-header-content > ul > li:last-child a {
+    padding-right: 7px;
+    padding-left: 7px;
+  }
+}
+@media (min-width: 768px) {
+  #wc-header-content > ul > li > div.bootstrap-select,
+#wc-header-content > ul > li > input {
+    width: 160px;
+  }
+}
+@media (min-width: 992px) {
+  #wc-header-content > ul > li > div.bootstrap-select,
+#wc-header-content > ul > li > input {
+    width: 220px;
+  }
+}
+@media (max-width: 575px) {
+  .container {
+    padding: 0;
+  }
+
+  .container > div {
+    padding: 15px;
+  }
+}
+footer {
+  bottom: 0;
+  position: absolute;
+  height: 18px;
+  width: 100%;
+  font-size: 0.6rem;
+  text-align: center;
+}
+
+#wc-tabs-container {
+  margin: 0.5rem 0;
+  min-height: 34px;
+}
+#wc-tabs-container > div {
+  padding: 0;
+}
+#wc-tabs-container > div > div {
+  padding: 0 5px;
+  margin: 0.25rem;
+  border: 1px black solid;
+  background-color: #343a40;
+  color: #fff;
+}
+
+#wc-windows-container {
+  font-family: monospace;
+}
+
+.wc-window-container {
+  margin: 0.5rem 0;
+}
+.wc-window-container .wc-window {
+  border: 1px black solid;
+}
+.wc-window-container .wc-window p, .wc-window-container .wc-window span {
+  color: #fff;
+}
+
+.wc-window-content {
+  height: 20rem;
+  min-height: 95%;
+  overflow-y: auto;
+  background-color: #343a40;
+  border-top: 1px black solid;
+  border-bottom: 1px black solid;
+}
+.wc-window-content .wc-window-content-input {
+  padding: 0 5px;
+  outline: none;
+  width: 100%;
+  border: 0;
+  color: #fff;
+  background-color: #343a40;
+}
+.wc-window-content .wc-window-content-output {
+  padding: 0 5px;
+}
+.wc-default-content {
+  height: 22.8rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #343a40;
+  background: repeating-linear-gradient(135deg, #f8f9fa, #f8f9fa 1rem, transparent 1rem, transparent 2rem);
+}
+
+.wc-window-header {
+  height: 1.5rem;
+  min-height: 3%;
+  background-color: #6c757d;
+}
+.wc-window-header > a, .wc-window-header > span {
+  padding: 0 5px;
+}
+.wc-window-footer {
+  height: 1.2rem;
+  min-height: 2%;
+  font-size: 0.8rem;
+  background-color: #6c757d;
+}
+.wc-window-footer > p {
+  padding: 0 5px;
+  height: 100%;
+}
+.wc-window-footer > p.wc-window-error-status {
+  background-color: #dc3545;
+}
+
+/*# sourceMappingURL=web-console.css.map */

@@ -178,19 +178,9 @@
     <Content Include="Scripts\dependencies\signalR-2.4.0.js" />
     <Content Include="Scripts\dependencies\signalR-2.4.0.min.js" />
     <Content Include="Scripts\panel\panel-storage.js" />
-    <Content Include="Styles\window\window-container.css" />
-    <Content Include="Styles\window\window-content.css" />
-    <Content Include="Styles\core\core.css" />
-    <Content Include="Styles\core\core.css.map" />
-    <Content Include="Styles\core\core.min.css" />
-    <Content Include="Styles\window\window-footer.css" />
-    <Content Include="Styles\window\window-header.css" />
-    <Content Include="Styles\window\window.css" />
-    <Content Include="Styles\global\error.css" />
-    <Content Include="Styles\global\footer.css" />
-    <Content Include="Styles\global\global.css" />
-    <Content Include="Styles\global\header.css" />
     <Content Include="favicon.ico" />
+    <Content Include="Styles\_output\web-console.css" />
+    <Content Include="Styles\_output\web-console.min.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -305,26 +295,30 @@
     <Content Include="Styles\dependencies\bootstrap-4.1.3\core\_variables.scss" />
     <Content Include="Styles\dependencies\bootstrap-4.1.3\bootstrap.scss" />
     <Content Include="build-sass.ps1" />
-    <Content Include="Styles\core\scss\core.scss" />
     <Content Include="Styles\dependencies\bootstrap-4.1.3\_link.scss" />
     <Content Include="Styles\dependencies\bootstrap-4.1.3\_text.scss" />
     <Content Include="Styles\dependencies\bootstrap-4.1.3\_color.scss" />
-    <Content Include="Styles\core\scss\_container.scss" />
-    <Content Include="Styles\core\scss\_link.scss" />
+    <Content Include="Styles\layout\layout.scss" />
     <Content Include="Styles\dependencies\bootstrap-select-1.13.3\core\bootstrap-select.scss" />
     <Content Include="Styles\dependencies\bootstrap-select-1.13.3\core\variables.scss" />
-    <Content Include="Styles\core\scss\_select.scss" />
+    <Content Include="Styles\global\_select.scss" />
     <Content Include="Styles\dependencies\bootstrap-4.1.3\_dropdown.scss" />
     <Content Include="Styles\dependencies\bootstrap-4.1.3\_input.scss" />
     <Content Include="Styles\dependencies\bootstrap-4.1.3\_navbar.scss" />
     <Content Include="Styles\dependencies\bootstrap-4.1.3\_select.scss" />
-    <Content Include="Styles\core\scss\_navbar.scss" />
     <Content Include="Views\Error\Critical.cshtml" />
     <Content Include="Views\Error\PageNotFound.cshtml" />
     <Content Include="Styles\dependencies\bootstrap-4.1.3\_popover.scss" />
-    <Content Include="Styles\global\modal.css" />
     <Content Include="Views\Workspace\Partial\NoteModal.cshtml" />
     <Content Include="Views\Workspace\Partial\WindowModal.cshtml" />
+    <Content Include="Styles\web-console.scss" />
+    <Content Include="Styles\window\window.scss" />
+    <Content Include="Styles\layout\_header.scss" />
+    <Content Include="Styles\global\_modal.scss" />
+    <Content Include="Styles\window\_content.scss" />
+    <Content Include="Styles\window\_container.scss" />
+    <Content Include="Styles\global\global.scss" />
+    <Content Include="Styles\_output\web-console.css.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

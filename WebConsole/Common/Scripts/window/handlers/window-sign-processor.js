@@ -7,7 +7,7 @@ function createDefaultSign(id) {
                        .addClass("d-flex")
                        .addClass("align-items-end")
                        .addClass("justify-content-end")
-                       .addClass(wcDefaultSignClass.GetName())
+                       .addClass(wcDefaultContentClass.GetName())
                        .append("No active job...")
                        .hide();
     var container = id

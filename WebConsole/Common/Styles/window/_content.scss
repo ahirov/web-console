@@ -1,0 +1,28 @@
+﻿.wc-window-content {
+    height: 20rem;
+    min-height: 95%;
+
+    overflow-y: auto;
+    background-color: $dark;
+
+    border: {
+        top:    $wc-border;
+        bottom: $wc-border;
+    }
+
+    .wc-window-content-input {
+        padding: $wc-padding;
+        outline: none;
+        width: 100%;
+
+        border: 0;
+        color: $white;
+        background-color: $dark;
+    }
+
+    .wc-window-content-output {
+        padding: $wc-padding;
+
+        > p {@extend %wc-text-overflow;}
+    }
+}

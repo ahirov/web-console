@@ -23,9 +23,7 @@ namespace WebConsole.Config
 
             var css = new StyleBundle("~/bundles/css");
             bundles.Add(css);
-            Include("~/Styles/core/",   css, false);
-            Include("~/Styles/global/", css);
-            Include("~/Styles/window/", css);
+            Include("~/Styles/_output/", css, false);
         }
 
         private static void Include(string path,

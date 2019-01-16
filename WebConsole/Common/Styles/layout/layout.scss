@@ -1,0 +1,22 @@
+﻿@import "header";
+
+@media (max-width: map-get($grid-breakpoints, sm) - 1) {
+    .container {
+        padding: 0;
+    }
+
+    .container > div {
+        padding: $grid-gutter-width / 2;
+    }
+}
+
+footer {
+    bottom: 0;
+    position: absolute;
+
+    height: 18px;
+    width: 100%;
+
+    font-size: 0.6rem;
+    text-align: center;
+}

@@ -1,0 +1,40 @@
+﻿@import "container";
+@import "content";
+
+.wc-default-content {
+    height: 22.8rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+
+    color: $dark;
+    background: repeating-linear-gradient(135deg, $light, $light 1rem,
+                                          transparent 1rem, transparent 2rem);
+}
+
+.wc-window-header {
+    height: 1.5rem;
+    min-height: 3%;
+    background-color: $secondary;
+
+    > a, > span {
+        padding: $wc-padding;
+    }
+
+    > span {@extend %wc-text-overflow;}
+}
+
+.wc-window-footer {
+    height: 1.2rem;
+    min-height: 2%;
+    font-size: 0.8rem;
+    background-color: $secondary;
+
+    > p {
+        padding: $wc-padding;
+        height: 100%;
+    }
+
+    > p.wc-window-error-status {
+        background-color: $danger;
+    }
+}
