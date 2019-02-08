@@ -50,18 +50,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationStorage.cs" />
-    <Compile Include="Entities\ConfigInfo.cs" />
+    <Compile Include="Entities\Configuration\ConfigurationInfo.cs" />
+    <Compile Include="Entities\Configuration\SettingsInfo.cs" />
     <Compile Include="Entities\JobContent.cs" />
     <Compile Include="Entities\JobDescription.cs" />
-    <Compile Include="Entities\JobInfo.cs" />
+    <Compile Include="Entities\Configuration\JobInfo.cs" />
     <Compile Include="Job\Exceptions\JobConfigFileException.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Extensions\XObjectExtensions.cs" />
     <Compile Include="IoC\WebShellModule.cs" />
-    <Compile Include="Job\Config\JobInfoProcessor.cs" />
-    <Compile Include="Job\Config\ConfigInfoProcessor.cs" />
-    <Compile Include="Job\Config\JobInfoReader.cs" />
-    <Compile Include="Job\Config\ConfigInfoReader.cs" />
+    <Compile Include="Job\Configuration\JobInfoProcessor.cs" />
+    <Compile Include="Job\Configuration\ConfigInfoProcessor.cs" />
+    <Compile Include="Job\Configuration\ConfigInfoReader.cs" />
     <Compile Include="Job\JobBufferHandler.cs" />
     <Compile Include="Job\Initialization\JobContentProvider.cs" />
     <Compile Include="Job\Description\JobDescriptionsProvider.cs" />
@@ -75,5 +75,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

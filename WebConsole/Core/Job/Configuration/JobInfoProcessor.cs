@@ -3,9 +3,9 @@
 // Copyright (c) 2018 Anton Hirov
 
 using System;
-using WebConsole.Core.Entities;
+using WebConsole.Core.Entities.Configuration;
 
-namespace WebConsole.Core.Job.Config
+namespace WebConsole.Core.Job.Configuration
 {
     public interface IJobInfoProcessor
     {
@@ -19,8 +19,8 @@ namespace WebConsole.Core.Job.Config
             return new JobInfo
             {
                 Name = type.Name,
-                FullName = type.FullName,
-                Location = type.Assembly.Location
+                Namespace = type.Namespace,
+                Location  = type.Assembly.Location
             };
         }
     }

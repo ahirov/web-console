@@ -5,13 +5,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using WebConsole.Core.Entities;
+using WebConsole.Core.Entities.Configuration;
 
-namespace WebConsole.Core.Job.Config
+namespace WebConsole.Core.Job.Configuration
 {
     public interface IConfigInfoProcessor
     {
-        ConfigInfo Process(List<Type> customJobs);
+        ConfigurationInfo Process(List<Type> customJobs);
     }
 
     public class ConfigInfoProcessor : IConfigInfoProcessor
@@ -26,7 +26,7 @@ namespace WebConsole.Core.Job.Config
             this.jobInfoProcessor = jobInfoProcessor;
         }
 
-        public ConfigInfo Process(List<Type> customJobs)
+        public ConfigurationInfo Process(List<Type> customJobs)
         {
             var config = configInfoReader.Read();
             var jobs = customJobs.Select(jobInfoProcessor.Process);

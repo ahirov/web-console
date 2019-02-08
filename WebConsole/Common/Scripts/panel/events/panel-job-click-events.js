@@ -26,8 +26,9 @@ function startJobButtonEvent() {
     var job = new JobContent();
     job.status = new JobStatus();
     job.location = info.location;
-    job.fullName = info.fullName;
     job.name     = info.name;
+    job.fullName = info.namespace
+           + "." + info.name;
     saveJob(job);
 
     var args = $(wcJobArgsId).val();

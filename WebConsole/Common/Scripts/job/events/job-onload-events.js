@@ -12,7 +12,8 @@ $(document).ready(function () {
             $.CreateOption()
              .data("jobInfo", info)
              .attr("title", info.name)
-             .append(info.fullName)
+             .append(info.namespace
+             + "." + info.name)
              .appendTo(list);
         }
         list.selectpicker("refresh");

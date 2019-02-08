@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Diagnostics;
 using WebConsole.Core.Entities;
+using static WebConsole.Core.ApplicationConstants;
 
 namespace WebConsole.Core.Job.Initialization
 {
@@ -36,9 +37,9 @@ namespace WebConsole.Core.Job.Initialization
 
         public int GetLimit()
         {
-            var setting = ConfigurationManager.AppSettings[ApplicationConstants.JobsLimitLiteral];
+            var setting = ConfigurationManager.AppSettings[JobsLimitLiteral];
             var isSuccessful = int.TryParse(setting, out var limit);
-            return isSuccessful ? limit : ApplicationConstants.DefaultJobsLimit;
+            return isSuccessful ? limit : DefaultJobsLimit;
         }
     }
 }

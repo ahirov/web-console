@@ -15,11 +15,6 @@ namespace WebConsole.Core
         public const int DefaultJobsLimit = 12;
 
         // CODE
-        public const string JobsLiteral      = "jobs";
-        public const string LocationLiteral  = "location";
-        public const string NamespaceLiteral = "namespace";
-        public const string SettingsLiteral  = "settings";
         public const string JobsLimitLiteral = "jobsLimit";
-
     }
 }

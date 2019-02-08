@@ -9,7 +9,7 @@ using System.Web.Mvc;
 using Newtonsoft.Json;
 using WebConsole.Controllers;
 using WebConsole.Core.Job;
-using WebConsole.Core.Job.Config;
+using WebConsole.Core.Job.Configuration;
 using WebConsole.Core.Job.Description;
 using Console = AttachedConsole;
 using ConsoleWithError = AttachedConsoleWithError;
@@ -43,7 +43,8 @@ namespace WebConsole.Areas.Job.Controllers
                 typeof(ConsoleWithError.Program)
             };
             var config = configProcessor.Process(jobs);
-            ConfigurationManager.AppSettings[JobsLimitLiteral] = config.JobsLimit;
+            ConfigurationManager.AppSettings[JobsLimitLiteral]
+                        = config.Settings.JobsLimit.ToString();
             return ReturnData(JsonConvert.SerializeObject(config.Jobs));
         }
 
